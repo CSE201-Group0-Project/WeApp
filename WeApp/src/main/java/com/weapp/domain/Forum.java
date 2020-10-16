@@ -4,6 +4,18 @@ public class Forum {
 	private String title;
 	private String content;
 	
+	public int getId() {
+		return forumId;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public String getContent() {
+		return content;
+	}
+	
 	public String author(String RegisteredUser) {
 		return RegisteredUser;
 	}
