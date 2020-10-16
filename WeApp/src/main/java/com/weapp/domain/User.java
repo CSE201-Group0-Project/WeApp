@@ -12,22 +12,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.weapp.security.Authority;
 
 @Entity
 @Table(name="users")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class User {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id; 
 	private String username; 
 	private String password; 
 	private String name; 
-	@OneToMany(targetEntity = Authority.class, mappedBy="user", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	Set<Authority> authorities = new HashSet<>(); 
 	
 
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}
@@ -53,10 +54,17 @@ public class User {
 		this.name = name;
 	}
 	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
 	public Set<Authority> getAuthorities() {
 		return authorities;
 	}
 	public void setAuthorities(Set<Authority> authorities) {
 		this.authorities = authorities;
 	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name
+				+ ", authorities=" + authorities + "]";
+	}
+	
 }
