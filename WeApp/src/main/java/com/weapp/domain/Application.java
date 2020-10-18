@@ -21,6 +21,7 @@ public class Application {
 	private String version; 
 	private String link; 
 	private double price; 
+	private boolean isApproved; 
 	private User user; 
 	
 
@@ -69,6 +70,12 @@ public class Application {
 		this.price = price;
 	}
 	
+	public boolean isApproved() {
+		return isApproved;
+	}
+	public void setApproved(boolean isApproved) {
+		this.isApproved = isApproved;
+	}
 	@ManyToOne
 	public User getUser() {
 		return user;
