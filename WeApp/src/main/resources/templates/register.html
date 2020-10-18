@@ -8,9 +8,13 @@
 <script src="/js/register.js"></script>
 </head>
 <body>
-	<div class="container">
-	<img class="mb-4" src="/images/logo.png" alt="" width="150" height="150">
-	<h1>Create an Account</h1>
+	<div class="container mb-5">
+	<div class="text-center mt-5">
+		<img class="mb-4" src="/images/logo.png" alt="" width="150" height="150">
+	</div>
+	<div class="card bg-light mb-3 mx-auto" style="max-width: 40rem;">
+	<div class="card-body">
+	<h1 class="card-title text-center">Create Account</h1>
 		<form action="" method="post" class="needs-validation" novalidate>
 		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 			<div class="form-group">
@@ -51,8 +55,16 @@
       			Password must match. 
     		</small>
 			</div>
-			<button type="submit" class="btn btn-primary">Create an account</button>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">Create an account</button>
+				<div class ="mt-3 mb-5">
+					<a href="/login" class="text-muted font-weight-normal">I already have an account</a>
+				</div>
+			</div>
 		</form>
+		</div>
+		</div>
+		<p class="mt-5 mb-3 text-muted text-center">&copy; 2020 JoJo Technology</p>
 	</div>
 </body>
 </html>
