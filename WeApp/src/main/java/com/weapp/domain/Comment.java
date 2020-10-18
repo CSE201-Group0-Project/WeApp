@@ -1,3 +1,6 @@
+package com.weapp.domain;
+
+import java.util.*;
 
 public class Comment {
 	private int commentId;

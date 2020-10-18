@@ -1,3 +1,6 @@
+package com.weapp.domain;
+
+import java.util.*;
 
 public class Forum {
 	private int forumId;

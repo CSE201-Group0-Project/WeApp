@@ -1,4 +1,6 @@
-package groupproject;
+package com.weapp.domain;
+
+import java.util.*;
 
 public class Moderator {
 		public String Username;
