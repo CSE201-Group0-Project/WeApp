@@ -6,14 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="applications")
 public class Application {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+
 	private int id; 
 	private String description; 
 	private String organization; 
@@ -21,9 +21,11 @@ public class Application {
 	private String version; 
 	private String link; 
 	private double price; 
+	private User user; 
 	
 
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}
@@ -65,6 +67,14 @@ public class Application {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	@ManyToOne
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

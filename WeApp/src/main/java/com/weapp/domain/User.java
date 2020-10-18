@@ -25,8 +25,8 @@ public class User {
 	private String username; 
 	private String password; 
 	private String name; 
-	Set<Authority> authorities = new HashSet<>(); 
-	
+	private Set<Authority> authorities = new HashSet<>(); 
+	private Set<Application> applications = new HashSet<>(); 
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
@@ -60,6 +60,15 @@ public class User {
 	}
 	public void setAuthorities(Set<Authority> authorities) {
 		this.authorities = authorities;
+	}
+	
+	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY, mappedBy="user")
+	public Set<Application> getApplications() {
+		return applications;
+	}
+	
+	public void setApplications(Set<Application> applications) {
+		this.applications = applications;
 	}
 	@Override
 	public String toString() {
