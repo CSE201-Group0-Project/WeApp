@@ -7,21 +7,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="applications")
 public class Application {
 	
 
 	private int id; 
+	private String name; 
 	private String description; 
 	private String organization; 
 	private ArrayList<String> platform; 
 	private String version; 
 	private String link; 
 	private double price; 
-	private boolean isApproved; 
+	private boolean approved; 
 	private User user; 
 	
 
@@ -32,6 +31,12 @@ public class Application {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getDescription() {
 		return description;
@@ -70,11 +75,11 @@ public class Application {
 		this.price = price;
 	}
 	
-	public boolean isApproved() {
-		return isApproved;
+	public boolean getApproved() {
+		return approved;
 	}
-	public void setApproved(boolean isApproved) {
-		this.isApproved = isApproved;
+	public void setApproved(boolean approved) {
+		this.approved = approved;
 	}
 	@ManyToOne
 	public User getUser() {
