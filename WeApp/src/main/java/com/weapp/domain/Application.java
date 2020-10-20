@@ -88,5 +88,11 @@ public class Application {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	@Override
+	public String toString() {
+		return "Application [id=" + id + ", name=" + name + ", description=" + description + ", organization="
+				+ organization + ", platform=" + platform + ", version=" + version + ", link=" + link + ", price="
+				+ price + ", approved=" + approved + ", user=" + user + "]";
+	}
 	
 }

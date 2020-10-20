@@ -14,7 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.weapp.domain.Application;
 import com.weapp.domain.User;
@@ -28,8 +27,8 @@ public class ApplicationController {
   
   @GetMapping("/applications") 
   public String getApplications(ModelMap model) {
-	  model.put("application", new Application());
-	  return "application"; 
+
+	  return "applications"; 
   }
   
   @GetMapping("/applications/{applicationId}")
