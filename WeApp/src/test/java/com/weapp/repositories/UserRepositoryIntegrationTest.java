@@ -2,6 +2,8 @@ package com.weapp.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.*;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.weapp.domain.User;
+
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -38,5 +41,20 @@ class UserRepositoryIntegrationTest {
         assertThat(found.getUsername())
           .isEqualTo(amy.getUsername());
     }
-
+    
+    @Test
+    public void whenFindByName_thenReturnUser() {
+        // given
+        User amy = new User();
+        amy.setName("amy");
+        entityManager.persist(amy);
+        entityManager.flush();
+     
+        // when
+        User found = userRepository.findByName(amy.getName());
+     
+        // then
+        assertThat(found.getName())
+          .isEqualTo(amy.getName());
+    }
 }

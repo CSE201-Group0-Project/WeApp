@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.weapp.domain.Application;
+import com.weapp.domain.User;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -71,5 +72,75 @@ public class ApplicationRepositoryIntegrationTest {
         // then
         assertThat(results).isEqualTo(expRet);
     }
+    
+    @Test
+    public void whenFindByVersion_thenReturnApplications() {
+        // given
+        Application dummy1 = new Application();
+        dummy1.setVersion("v1");
+        Application dummy2 = new Application();
+        dummy2.setVersion("v1");
+        entityManager.persist(dummy1);
+        entityManager.persist(dummy2);
+        entityManager.flush();
+        
+        List<Application> expRet = new ArrayList<>(); 
+        expRet.add(dummy1);
+        expRet.add(dummy2);
+     
+        // when
+        List<Application> results = applicationRepository.findByVersion(dummy1.getVersion());
+        
+     
+        // then
+        assertThat(results).isEqualTo(expRet);
+    }
+    
+    @Test
+    public void whenFindByApproved_thenReturnApplications() {
+        // given
+        Application dummy1 = new Application();
+        dummy1.setApproved(true);
+        Application dummy2 = new Application();
+        dummy2.setApproved(true);
+        entityManager.persist(dummy1);
+        entityManager.persist(dummy2);
+        entityManager.flush();
+        
+        List<Application> expRet = new ArrayList<>(); 
+        expRet.add(dummy1);
+        expRet.add(dummy2);
+     
+        // when
+        List<Application> results = applicationRepository.findByApproved(dummy1.getApproved());
+        
+     
+        // then
+        assertThat(results).isEqualTo(expRet);
+    }
 
+    @Test
+    public void whenFindByUser_thenReturnApplications() {
+        // given
+        User user1 = new User(); 
+        Application dummy1 = new Application();
+        dummy1.setUser(user1);
+        Application dummy2 = new Application();
+        dummy2.setUser(user1);
+        entityManager.persist(dummy1);
+        entityManager.persist(dummy2);
+        entityManager.persist(user1);
+        entityManager.flush();
+        
+        List<Application> expRet = new ArrayList<>(); 
+        expRet.add(dummy1);
+        expRet.add(dummy2);
+     
+        // when
+        List<Application> results = applicationRepository.findByUser(dummy1.getUser());
+        
+     
+        // then
+        assertThat(results).isEqualTo(expRet);
+    }
 }
