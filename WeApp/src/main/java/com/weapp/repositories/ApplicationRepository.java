@@ -20,9 +20,5 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	List<Application> findByVersion(String version);
 	
 	List<Application> findByApproved(Boolean approved);
-	
-    List<Application> findByOrderByPriceAsc();
-
-    List<Application> findByOrderByPriceDesc();
 
 }
