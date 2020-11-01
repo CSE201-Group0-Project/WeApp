@@ -17,3 +17,9 @@ body {
 .card {
 	min-width: 12rem;
 }
+#btnClear {
+	margin-right: 5px; 
+}
+#selectSort {
+	margin-left: 10px;
+}

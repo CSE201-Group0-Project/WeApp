@@ -10,7 +10,7 @@ import com.weapp.domain.User;
 public interface ApplicationRepository extends JpaRepository<Application, Integer>{
 	
 	// select * from application where name = :name
-	List<Application> findByName(String name); 
+	List<Application> findByNameIgnoreCase(String name); 
 	
 	// select * from application where organization = :organization
 	List<Application> findByOrganization(String organization); 
@@ -25,4 +25,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 
 	List<Application> findByPlatform(String platform);
 	
+	List<Application> findAll(); 
+	
+	List<Application> findByOrderByNameAsc(); 
 }

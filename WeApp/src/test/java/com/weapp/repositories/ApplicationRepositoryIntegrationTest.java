@@ -44,7 +44,7 @@ public class ApplicationRepositoryIntegrationTest {
         expRet.add(dummy2);
      
         // when
-        List<Application> results = applicationRepository.findByName(dummy1.getName());
+        List<Application> results = applicationRepository.findByNameIgnoreCase(dummy1.getName());
         
      
         // then
