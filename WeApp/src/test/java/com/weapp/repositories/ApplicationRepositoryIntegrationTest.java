@@ -119,6 +119,52 @@ public class ApplicationRepositoryIntegrationTest {
         // then
         assertThat(results).isEqualTo(expRet);
     }
+    
+    @Test
+    public void whenFindByCategory_thenReturnApplications() {
+        // given
+        Application dummy1 = new Application();
+        dummy1.setCategory("dummy");
+        Application dummy2 = new Application();
+        dummy2.setCategory("dummy");
+        entityManager.persist(dummy1);
+        entityManager.persist(dummy2);
+        entityManager.flush();
+        
+        List<Application> expRet = new ArrayList<>(); 
+        expRet.add(dummy1);
+        expRet.add(dummy2);
+     
+        // when
+        List<Application> results = applicationRepository.findByCategory(dummy1.getCategory());
+        
+     
+        // then
+        assertThat(results).isEqualTo(expRet);
+    }
+    
+    @Test
+    public void whenFindByPlatform_thenReturnApplications() {
+        // given
+        Application dummy1 = new Application();
+        dummy1.setPlatform("dummy");
+        Application dummy2 = new Application();
+        dummy2.setPlatform("dummy");
+        entityManager.persist(dummy1);
+        entityManager.persist(dummy2);
+        entityManager.flush();
+        
+        List<Application> expRet = new ArrayList<>(); 
+        expRet.add(dummy1);
+        expRet.add(dummy2);
+     
+        // when
+        List<Application> results = applicationRepository.findByPlatform(dummy1.getPlatform());
+        
+     
+        // then
+        assertThat(results).isEqualTo(expRet);
+    }
 
     @Test
     public void whenFindByUser_thenReturnApplications() {

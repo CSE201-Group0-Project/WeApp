@@ -16,9 +16,11 @@ public class Application {
 	private String name; 
 	private String description; 
 	private String organization; 
-	private ArrayList<String> platform; 
+	private String platform; 
+	private String category; 
 	private String version; 
 	private String link; 
+	private String imgSrc;
 	private double price; 
 	private boolean approved; 
 	private User user; 
@@ -50,11 +52,17 @@ public class Application {
 	public void setOrganization(String organization) {
 		this.organization = organization;
 	}
-	public ArrayList<String> getPlatform() {
+	public String getPlatform() {
 		return platform;
 	}
-	public void setPlatform(ArrayList<String> platform) {
+	public void setPlatform(String platform) {
 		this.platform = platform;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public String getVersion() {
 		return version;
@@ -67,6 +75,12 @@ public class Application {
 	}
 	public void setLink(String link) {
 		this.link = link;
+	}
+	public String getImgSrc() {
+		return imgSrc;
+	}
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
 	}
 	public double getPrice() {
 		return price;
@@ -91,8 +105,8 @@ public class Application {
 	@Override
 	public String toString() {
 		return "Application [id=" + id + ", name=" + name + ", description=" + description + ", organization="
-				+ organization + ", platform=" + platform + ", version=" + version + ", link=" + link + ", price="
-				+ price + ", approved=" + approved + ", user=" + user + "]";
+				+ organization + ", platform=" + platform + ", category=" + category + ", version=" + version
+				+ ", link=" + link + ", imgSrc=" + imgSrc + ", price=" + price + ", approved=" + approved + ", user="
+				+ user + "]";
 	}
-	
 }

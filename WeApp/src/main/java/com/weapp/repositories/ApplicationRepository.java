@@ -20,5 +20,9 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	List<Application> findByVersion(String version);
 	
 	List<Application> findByApproved(Boolean approved);
+	
+	List<Application> findByCategory(String category);
 
+	List<Application> findByPlatform(String platform);
+	
 }

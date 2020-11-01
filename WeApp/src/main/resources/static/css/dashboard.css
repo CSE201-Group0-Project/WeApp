@@ -5,3 +5,15 @@ body {
   padding: 3rem 1.5rem;
   text-align: center;
 }
+#logo {
+	margin-right: 10px;
+	margin-left: 15px; 
+	width: 35px; 
+	height: 35px;
+}
+#searchButton {
+	margin-right: 5px; 
+}
+.card {
+	min-width: 12rem;
+}
