@@ -35,7 +35,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
             .antMatchers("/", "/js/**", "/css/**", "/images/**").permitAll()
-			.antMatchers("/register").permitAll()
+			.antMatchers("/register").permitAll()          
+            .antMatchers("/h2_console/**").permitAll() // we need config just for console, nothing else   
 			.antMatchers("/admin/**").hasRole("ADMIN")
 			.anyRequest().hasRole("USER").and()
 			.formLogin()
@@ -45,6 +46,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			  .and()
 		    .logout()
 		      .logoutUrl("/logout")
-		      .permitAll();      
+		      .permitAll();  
+		// this will ignore only h2-console csrf, spring security 4+
+        http.csrf().ignoringAntMatchers("/h2-console/**");
+        //this will allow frames with same origin which is much more safe
+        http.headers().frameOptions().sameOrigin();
 	}
 }
