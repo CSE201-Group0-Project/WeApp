@@ -21,3 +21,15 @@ main > .container {
 code {
   font-size: 80%;
 }
+#logo {
+	margin-right: 10px;
+	margin-left: 15px; 
+	width: 35px; 
+	height: 35px;
+}
+#searchButton {
+	margin-right: 5px; 
+}
+#btnClear {
+	margin-right: 5px; 
+}

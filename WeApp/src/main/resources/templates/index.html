@@ -17,6 +17,11 @@
 			window.location.href = "/login"; 
 		})
 	});
+	$(function () {
+		$("#viewDashboard").click(function () {
+			window.location.href = "/dashboard"; 
+		})
+	});
 	</script>
 	</head>
 	<body>
@@ -42,15 +47,25 @@
 		        window.location = "[[@{/}]]";
 		    }
 	  </script>
+	  
 	 </div>
+	  <div sec:authorize="hasRole('ROLE_ADMIN')">
+		<button type="button" class="btn btn-primary my-2 my-sm-0" id="viewDashboard">View Request</button>
+	  </div>
 	  <div sec:authorize="!isAuthenticated()">
 		<button type="button" class="btn btn-outline-info my-2 my-sm-0" id="loginBtn">Login</button>
+	  </div>
+	  <div sec:authorize="isAuthenticated()">
+	     <form action="/logout" method="post">
+         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+	     <button type="submit" class="btn btn-outline-info my-2 my-sm-0">Logout</button>
+		</form>
 	  </div>
       </div>
     </nav>
     <main role="main" class="container">
       <div class="starter-template">
-      <h1>Application list view</h1>
+      <h1>Application card view</h1>
         <div class="form-group row" id="selectForm">
 	    <label for="exampleFormControlSelect1">Sort By</label>
 	    <form th:action="@{/}">
@@ -73,9 +88,10 @@
 		    <img class="card-img-top" th:src="${app.imgSrc}" alt="Card image cap">
 		    <div class="card-body">
 		      <h5 th:text="${app.name}" class="card-title">Card title</h5>
-		      <p  th:text="${app.description}" class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		      <p  th:text="${app.price}" class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      <p  th:text="${app.description}" class="card-text text-justify">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		      <p  th:text="${app.price == 0 ? 'Free' : app.price}" class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 		      <a th:href="${app.link}" class="card-link" target="_blank">View App</a>
+		      <a th:href="@{/app/{applicationId}(applicationId=${app.id})}" class="card-link" target="_blank">More Info</a>
 		    </div>
 		  </div>
 		  </div>

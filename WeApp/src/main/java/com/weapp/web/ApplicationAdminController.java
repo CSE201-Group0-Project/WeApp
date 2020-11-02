@@ -20,25 +20,25 @@ import com.weapp.domain.User;
 import com.weapp.repositories.ApplicationRepository;
 
 @Controller
-public class ApplicationController {
-  
+public class ApplicationAdminController {
+	  
   @Autowired
   private ApplicationRepository appRepo;
   
   @GetMapping("/applications") 
   public String getApplications(ModelMap model) {
-
-	  return "applications"; 
+	  List<Application> applications = appRepo.findAll(); 
+	  model.put("applications", applications);
+	  return "index"; 
   }
   
   @GetMapping("/applications/{applicationId}")
   public String getApplication(@PathVariable int applicationId, ModelMap model, HttpServletResponse response) throws IOException {
-	model.put("application", new Application());
 	Optional<Application> appOpt = appRepo.findById(applicationId);
     
     if (appOpt.isPresent()) {
       Application application = appOpt.get();
-      model.put("application", application);
+      model.addAttribute("application", application);
     } else {
       response.sendError(HttpStatus.NOT_FOUND.value(), "Application with id " + applicationId + " was not found");
       return "application";

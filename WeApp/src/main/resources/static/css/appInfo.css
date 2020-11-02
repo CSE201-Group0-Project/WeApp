@@ -1,0 +1,7 @@
+#carouselSlides {
+	width: 200px; 
+}
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}

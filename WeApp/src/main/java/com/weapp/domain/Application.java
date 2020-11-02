@@ -21,6 +21,7 @@ public class Application {
 	private String version; 
 	private String link; 
 	private String imgSrc;
+	private String screenshots; 
 	private double price; 
 	private boolean approved; 
 	private User user; 
@@ -81,6 +82,12 @@ public class Application {
 	}
 	public void setImgSrc(String imgSrc) {
 		this.imgSrc = imgSrc;
+	}
+	public String getScreenshots() {
+		return screenshots;
+	}
+	public void setScreenshots(String screenshots) {
+		this.screenshots = screenshots;
 	}
 	public double getPrice() {
 		return price;

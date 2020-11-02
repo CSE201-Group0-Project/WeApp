@@ -14,6 +14,9 @@ body {
 #searchButton {
 	margin-right: 5px; 
 }
+#viewDashboard {
+	margin-right: 5px; 
+}
 .card {
 	min-width: 12rem;
 }
