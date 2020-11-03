@@ -2,6 +2,9 @@ package com.weapp.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,16 +45,40 @@ class UserRepositoryIntegrationTest {
     @Test
     public void whenFindByName_thenReturnUser() {
         // given
-        User amy = new User();
-        amy.setName("amy");
-        entityManager.persist(amy);
+        User mockUser1 = new User();
+        mockUser1.setName("amy");
+        User mockUser2 = new User();
+        mockUser2.setName("amy");
+        entityManager.persist(mockUser1);
+        entityManager.persist(mockUser2);
         entityManager.flush();
+        
+        List<User> expRet = new ArrayList<>(); 
+        expRet.add(mockUser1);
+        expRet.add(mockUser2);
      
         // when
-        User found = userRepository.findByName(amy.getName());
+        List<User> results = userRepository.findByName(mockUser1.getName());
      
         // then
-        assertThat(found.getName())
-          .isEqualTo(amy.getName());
+        assertThat(results).isEqualTo(expRet);
+
     }
+    
+    @Test 
+    public void whenSuccessFullySaveUser() {
+    	 // given
+        User mockUser1 = new User();
+        mockUser1.setName("amy");
+        mockUser1.setUsername("amy@jojo.com");
+        entityManager.persist(mockUser1);
+        entityManager.flush();
+        
+        // when
+        User user = userRepository.save(mockUser1);
+        
+        //then 
+        assertThat(user).isNotNull();
+    } 
+   
 }

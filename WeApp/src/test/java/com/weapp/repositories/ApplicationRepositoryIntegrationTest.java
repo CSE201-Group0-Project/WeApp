@@ -33,7 +33,7 @@ public class ApplicationRepositoryIntegrationTest {
         Application dummy1 = new Application();
         dummy1.setName("Cook");
         Application dummy2 = new Application();
-        dummy2.setName("Cook");
+        dummy2.setName("cook");
         entityManager.persist(dummy1);
         entityManager.persist(dummy2);
         entityManager.flush();
