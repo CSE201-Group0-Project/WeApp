@@ -11,33 +11,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.weapp.domain.Application;
 import com.weapp.repositories.ApplicationRepository;
+import com.weapp.service.ApplicationService;
 
 @Controller
 public class DashboardController {
 
 
 	@Autowired
-	private ApplicationRepository appRepo;
+	private ApplicationService appService;
 
 	@GetMapping("/")
 	public String rootView (ModelMap model, @Param("keyword") String keyword, @Param("sortBy") String sortBy) {
 		List<Application> applications = new ArrayList<>(); 
 		if(keyword != null) {
-			applications = appRepo.findByNameIgnoreCase(keyword); 
+			applications = appService.findByNameIgnoreCase(keyword); 
 			model.addAttribute("applications", applications);
 			model.addAttribute("keyword", keyword);
 		} else {
-			applications = appRepo.findAll(); 
+			applications = appService.findAll(); 
 			model.put("applications", applications);
 		}
 
 		if(sortBy != null) {
 			if(sortBy.equals("name")) {
-				applications = appRepo.findByOrderByNameAsc();
+				applications = appService.findByOrderByNameAsc();
 				model.addAttribute("applications", applications);
 				model.addAttribute("sortBy", sortBy);
 			} else {
-				applications = appRepo.findAll(); 
+				applications = appService.findAll(); 
 				model.put("applications", applications);
 			}
 		}
@@ -47,7 +48,7 @@ public class DashboardController {
 
 	@GetMapping("/dashboard")
 	public String dashboard(ModelMap model) {
-		List<Application> applications = appRepo.findAll(); 
+		List<Application> applications = appService.findAll(); 
 		model.put("applications", applications);
 
 		return "dashboard"; 

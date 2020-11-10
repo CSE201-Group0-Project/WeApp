@@ -14,16 +14,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.weapp.domain.Application;
 import com.weapp.repositories.ApplicationRepository;
+import com.weapp.service.ApplicationService;
 
 @Controller
 public class ApplicationUserController {
 
 	@Autowired
-	private ApplicationRepository appRepo;
+	private ApplicationService appService; 
 
 	@GetMapping("/app/{applicationId}")
 	public String appInfoView(@PathVariable int applicationId, ModelMap model, HttpServletResponse response) throws IOException {
-		Optional<Application> appOpt = appRepo.findById(applicationId);
+		Optional<Application> appOpt = appService.findById(applicationId);
 
 		if (appOpt.isPresent()) {
 			Application application = appOpt.get();

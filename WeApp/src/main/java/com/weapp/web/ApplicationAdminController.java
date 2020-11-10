@@ -18,23 +18,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.weapp.domain.Application;
 import com.weapp.domain.User;
 import com.weapp.repositories.ApplicationRepository;
+import com.weapp.service.ApplicationService;
 
 @Controller
 public class ApplicationAdminController {
 	  
   @Autowired
-  private ApplicationRepository appRepo;
+  private ApplicationService appService;
   
   @GetMapping("/applications") 
   public String getApplications(ModelMap model) {
-	  List<Application> applications = appRepo.findAll(); 
+	  List<Application> applications = appService.findAll(); 
 	  model.put("applications", applications);
 	  return "index"; 
   }
   
   @GetMapping("/applications/{applicationId}")
   public String getApplication(@PathVariable int applicationId, ModelMap model, HttpServletResponse response) throws IOException {
-	Optional<Application> appOpt = appRepo.findById(applicationId);
+	Optional<Application> appOpt = appService.findById(applicationId);
     
     if (appOpt.isPresent()) {
       Application application = appOpt.get();
@@ -48,7 +49,7 @@ public class ApplicationAdminController {
   
   @PostMapping("/applications/{applicationId}")
   public String saveApplication(@PathVariable int applicationId, Application application) {
-    application = appRepo.save(application);
+    application = appService.save(application);
     
     return "redirect:/applications/" + application.getId();
   }
@@ -62,7 +63,7 @@ public class ApplicationAdminController {
 	application.setApproved(false);
 	application.setUser(user);
 
-	application = appRepo.save(application);
+	application = appService.save(application);
     
     return "redirect:/applications/" + application.getId();
   }

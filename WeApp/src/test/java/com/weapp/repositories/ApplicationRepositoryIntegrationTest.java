@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -189,4 +189,38 @@ public class ApplicationRepositoryIntegrationTest {
         // then
         assertThat(results).isEqualTo(expRet);
     }
+    
+//    @Test
+//    public void whenFindByKeyword_thenReturnApplications() {
+//        // given
+//        Application dummy1 = new Application();
+//        dummy1.setPlatform("dummy");
+//        Application dummy2 = new Application();
+//        dummy2.setName("dummy");
+//        Application dummy3 = new Application();
+//        dummy3.setCategory("dummy");
+//        Application dummy4 = new Application();
+//        dummy4.setDescription("dummy");
+//        Application dummy5 = new Application();
+//        dummy5.setOrganization("dummy");
+//        entityManager.persist(dummy1);
+//        entityManager.persist(dummy2);
+//        entityManager.persist(dummy3);
+//        entityManager.persist(dummy4);
+//        entityManager.persist(dummy5);
+//        entityManager.flush();
+//        
+//        List<Application> expRet = new ArrayList<>(); 
+//        expRet.add(dummy1);
+//        expRet.add(dummy2);
+//        expRet.add(dummy3);
+//        expRet.add(dummy4);
+//        expRet.add(dummy5);
+//     
+//        // when
+//        List<Application> results = applicationRepository.findByKeyword("dummy"); 
+//     
+//        // then
+//        assertThat(results).isEqualTo(expRet);
+//    }
 }
