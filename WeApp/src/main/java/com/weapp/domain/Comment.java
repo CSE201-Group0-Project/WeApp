@@ -21,6 +21,16 @@ public class Comment {
 	private Forum forum; 
 	private Date createdDate;
 	
+	public Comment() {}
+	
+	public Comment(int id, String content, User user, Forum forum, Date createdDate) {
+		super();
+		this.id = id;
+		this.content = content;
+		this.user = user;
+		this.forum = forum;
+		this.createdDate = createdDate;
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {

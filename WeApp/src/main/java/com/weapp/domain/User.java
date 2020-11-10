@@ -27,7 +27,20 @@ public class User {
 	private String name; 
 	private Set<Authority> authorities = new HashSet<>(); 
 	private Set<Application> applications = new HashSet<>(); 
-
+	
+	public User() {}
+	
+	public User(int id, String username, String password, String name, Set<Authority> authorities,
+			Set<Application> applications) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.authorities = authorities;
+		this.applications = applications;
+	}
+	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
 		return id;

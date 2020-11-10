@@ -1,7 +1,5 @@
 package com.weapp.domain;
 
-import java.util.*;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +23,28 @@ public class Application {
 	private double price; 
 	private boolean approved; 
 	private User user; 
+
+	public Application() {}
 	
+	public Application(int id, String name, String description, String organization, String platform, String category,
+			String version, String link, String imgSrc, String screenshots, double price, boolean approved, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.organization = organization;
+		this.platform = platform;
+		this.category = category;
+		this.version = version;
+		this.link = link;
+		this.imgSrc = imgSrc;
+		this.screenshots = screenshots;
+		this.price = price;
+		this.approved = approved;
+		this.user = user;
+	}
+
+
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

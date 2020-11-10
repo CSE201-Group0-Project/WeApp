@@ -25,6 +25,18 @@ public class Forum {
 	private Set<Comment> comments = new HashSet<>(); 
 	private Date createdDate;
 	
+	public Forum() {}
+	
+	public Forum(int id, String title, String description, User user, Set<Comment> comments, Date createdDate) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.user = user;
+		this.comments = comments;
+		this.createdDate = createdDate;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
