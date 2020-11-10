@@ -18,19 +18,22 @@ public class Comment {
 	private int id;
 	private String content;
 	private User user; 
-	private Forum forum; 
+	private Application application; 
 	private Date createdDate;
 	
 	public Comment() {}
 	
-	public Comment(int id, String content, User user, Forum forum, Date createdDate) {
+
+	public Comment(int id, String content, User user, Application application, Date createdDate) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.user = user;
-		this.forum = forum;
+		this.application = application;
 		this.createdDate = createdDate;
 	}
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getId() {
@@ -56,15 +59,18 @@ public class Comment {
 	}
 	
 	@ManyToOne
-	public Forum getForum() {
-		return forum;
+	public Application getApplication() {
+		return application;
 	}
-	public void setForum(Forum forum) {
-		this.forum = forum;
+
+	public void setApplication(Application application) {
+		this.application = application;
 	}
+
 	public Date getCreatedDate() {
 		return createdDate;
 	}
+
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}

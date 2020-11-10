@@ -56,6 +56,10 @@ public class ApplicationService {
 		return appRepo.findByOrderByNameAsc(); 
 	}
 	
+	public List<Application> findByKeyword(String keyword) {
+		return appRepo.findByKeyword(keyword); 
+	}
+	
 	public Application save(Application application) {
 		return appRepo.save(application); 
 	}

@@ -24,23 +24,18 @@ public class DashboardController {
 	public String rootView (ModelMap model, @Param("keyword") String keyword, @Param("sortBy") String sortBy) {
 		List<Application> applications = new ArrayList<>(); 
 		if(keyword != null) {
-			applications = appService.findByNameIgnoreCase(keyword); 
+			applications = appService.findByKeyword(keyword); 
 			model.addAttribute("applications", applications);
 			model.addAttribute("keyword", keyword);
-		} else {
-			applications = appService.findAll(); 
-			model.put("applications", applications);
-		}
-
-		if(sortBy != null) {
+		} else if(sortBy != null) {
 			if(sortBy.equals("name")) {
 				applications = appService.findByOrderByNameAsc();
 				model.addAttribute("applications", applications);
 				model.addAttribute("sortBy", sortBy);
-			} else {
-				applications = appService.findAll(); 
-				model.put("applications", applications);
-			}
+			} 
+		} else {
+			applications = appService.findByApproved(true);
+			model.put("applications", applications);
 		}
 
 		return "index"; 
