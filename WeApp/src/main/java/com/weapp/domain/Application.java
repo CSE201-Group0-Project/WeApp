@@ -1,14 +1,21 @@
 package com.weapp.domain;
 
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Application {
-	
+
 
 	private int id; 
 	private String name; 
@@ -23,28 +30,9 @@ public class Application {
 	private double price; 
 	private boolean approved; 
 	private User user; 
+	private SortedSet<Comment> comments = new TreeSet<>();
 
 	public Application() {}
-	
-	public Application(int id, String name, String description, String organization, String platform, String category,
-			String version, String link, String imgSrc, String screenshots, double price, boolean approved, User user) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.organization = organization;
-		this.platform = platform;
-		this.category = category;
-		this.version = version;
-		this.link = link;
-		this.imgSrc = imgSrc;
-		this.screenshots = screenshots;
-		this.price = price;
-		this.approved = approved;
-		this.user = user;
-	}
-
-
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -114,7 +102,7 @@ public class Application {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 	public boolean getApproved() {
 		return approved;
 	}
@@ -127,6 +115,14 @@ public class Application {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="application")
+	@OrderBy("createdDate, id")
+	public SortedSet<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(SortedSet<Comment> comments) {
+		this.comments = comments;
 	}
 	@Override
 	public String toString() {
