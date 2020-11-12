@@ -46,4 +46,3 @@ INSERT INTO comment(id, content, created_date, application_id, comment_id, user_
 (3, 'Me too!', '2020-11-10 10:10:12', 1, 2, 3),
 (4, 'Love from Vietnam', '2020-11-10 11:00:00', 1, null, 1),
 (5, 'Hello from China!', '2020-11-10 11:10:10', 1, 4, 2);
-
