@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -100,16 +101,16 @@ public class ApplicationRepositoryIntegrationTest {
     public void whenFindByApproved_thenReturnApplications() {
         // given
         Application dummy1 = new Application();
-        dummy1.setApproved(true);
         Application dummy2 = new Application();
+        List<Application> expRet = applicationRepository.findByApproved(true);  
+        expRet.add(dummy1);
+        expRet.add(dummy2);
+        dummy1.setApproved(true);
         dummy2.setApproved(true);
         entityManager.persist(dummy1);
         entityManager.persist(dummy2);
         entityManager.flush();
-        
-        List<Application> expRet = new ArrayList<>(); 
-        expRet.add(dummy1);
-        expRet.add(dummy2);
+
      
         // when
         List<Application> results = applicationRepository.findByApproved(dummy1.getApproved());
