@@ -1,11 +1,13 @@
 INSERT INTO users (id, name, password, username) VALUES
-(1, 'Amy Nguyen', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'aestheteeism'),
-(2, 'Xiaocheng Kang', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'kangx');
+(1, 'Amy Nguyen', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'nguyen47'),
+(2, 'Xiaocheng Kang', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'kangx'),
+(3, 'Zhuoyue Sun', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'sunz32'); 
 
 INSERT INTO authority (id, authority, user_id) VALUES
 (1, 'ROLE_ADMIN', 1),
 (2, 'ROLE_USER', 1),
-(3, 'ROLE_USER', 2);
+(3, 'ROLE_USER', 2),
+(4, 'ROLE_USER', 3);
 
 INSERT INTO application (id, approved, category, description, img_src, link, name, organization, platform, price, screenshots, version, user_id) VALUES
 (1, 1, 'messaging', 'A simple app that lets you text, video chat, and stay close with people you care about', 'https://i.imgur.com/e47wGWp.png', 'https://apps.apple.com/us/app/messenger/id454638411', 'Messenger', 'Facebook', 'IOS', 0.0, 'https://i.imgur.com/XMz9osB.jpg,https://i.imgur.com/KSUC7ws.jpg,https://i.imgur.com/mcU2Smv.jpg', 'v288.0', 1),
@@ -23,5 +25,25 @@ INSERT INTO application (id, approved, category, description, img_src, link, nam
 (13, 1, 'rental', 'A simple app that lets you book a house or hotel in this app, and make the traveling more convenience', 'https://i.imgur.com/gAkjJ6c.png', 'https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839', 'Booking.com', 'Booking', 'IOS', 0.0, '','v25.9.1', 1),
 (14, 1, 'news', 'A simple app that lets you watch sports game, see the highlights of the game, and news about things out of game', 'https://i.imgur.com/KVzpm3z.png', 'https://apps.apple.com/us/app/espn-live-sports-scores/id317469184', 'ESPN', 'ESPN', 'IOS', 0.0, '','v6.34', 1),
 (15, 1, 'news', 'The BBC News app brings you news from the BBC and our global network of journalists', 'https://i.imgur.com/qZfnGKq.png', 'https://play.google.com/store/apps/details?id=bbc.mobile.news.ww&hl=en_US&gl=US', 'BBC News', 'BBC Studios Limited', 'Android', 0.0, '','v5.16.0', 1),
-(16, 1, 'news', 'Discover quality content for all your interests - from personalized news, entertainment, tech and sports articles to trending lifestyle magazines', 'https://i.imgur.com/Zh0hcGa.png', 'https://play.google.com/store/apps/details?id=flipboard.app&hl=en_US&gl=US', 'Flipboard', 'Flipboard', 'Android', 0.0, '','v4.2.55', 1);
+(16, 1, 'news', 'Discover quality content for all your interests - from personalized news, entertainment, tech and sports articles to trending lifestyle magazines', 'https://i.imgur.com/Zh0hcGa.png', 'https://play.google.com/store/apps/details?id=flipboard.app&hl=en_US&gl=US', 'Flipboard', 'Flipboard', 'Android', 0.0, '','v4.2.55', 1),
+(17, 0, 'communication', 'WhatsApp can send and receive messages, calls, photos, videos, documents, and Voice Messages.', 'https://i.imgur.com/pposWbf.png', 'https://play.google.com/store/apps/details?id=com.whatsapp&hl=en_US&gl=US', 'WhatsApp Messenger', 'WhatsApp Inc.', 'Android', 0.0, 'https://i.imgur.com/T3oNV4L.jpg', 'v2.20', 1),
+(18, 0, 'communication', 'Discord is your place to talk. Create a home for your communities and friends.', 'https://i.imgur.com/ktVKdeF.png', 'https://play.google.com/store/apps/details?id=com.discord&hl=en_US&gl=US', 'Discord', 'Discord Inc.', 'Android', 0.0, 'https://i.imgur.com/gnYgXu0.jpg', 'v46.3', 1),
+(19, 0, 'communication', 'Pure instant messaging — simple, fast, secure, and synced across all your devices.', 'https://i.imgur.com/WAwR6Vp.png', 'https://play.google.com/store/apps/details?id=org.telegram.messenger&hl=en_US&gl=US', 'Telegram', 'Telegram Telegram FZ-LLC', 'Android', 0.0, 'https://i.imgur.com/6sTGozo.jpg', 'v7.2.1', 1),
+(20, 0, 'communication', 'Google Chrome is a fast, easy to use, and secure web browser.', 'https://i.imgur.com/J5rTmbW.png', 'https://play.google.com/store/apps/details?id=com.android.chrome&hl=en_US&gl=US', 'Google Chrome', 'Google', 'Android', 0.0, 'https://i.imgur.com/dr0sJmH.jpg', 'v86.0', 1),
+(21, 0, 'business', 'Meeting with flawless video and audio, instant screen sharing, and cross-platform instant messaging.', 'https://i.imgur.com/ziI7E15.png', 'https://play.google.com/store/apps/details?id=us.zoom.videomeetings&hl=en_US&gl=US', 'ZOOM Cloud Meetings', 'zoom.us', 'Android', 0.0, 'https://i.imgur.com/ZSDawFB.jpg', 'v5.4.1', 1),
+(22, 0, 'social', 'Twitter is your go-to social media app and the source for what is happening in the world.', 'https://i.imgur.com/vfta2zz.png', 'https://play.google.com/store/apps/details?id=com.twitter.android&hl=en_US&gl=US', 'Twitter', 'Twitter Inc.', 'Android', 0.0, 'https://i.imgur.com/7qCq6zs.jpg', 'v8.68', 1),
+(23, 0, 'music', 'With Spotify, you can listen to music and play millions of songs and podcasts for free.', 'https://i.imgur.com/sBpetMv.png', 'https://play.google.com/store/apps/details?id=com.spotify.music&hl=en_US&gl=US', 'Spotify', 'Spotify Ltd.', 'Android', 0.0, 'https://i.imgur.com/LZVVHIH.jpg', 'v8.5.83', 1),
+(24, 0, 'music', 'YouTube Music is a new music app that allows you to easily find what you’re looking for and discover new music.', 'https://i.imgur.com/7zKumev.png', 'https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music&hl=en_US&gl=US', 'YouTube Music', 'Google LLC', 'Android', 0.0, 'https://i.imgur.com/Djt19ye.jpg', 'v4.02.52', 1),
+(25, 0, 'tools', 'Tired of being tracked online? We can help. At DuckDuckGo, we believe online privacy should be simple.', 'https://i.imgur.com/cw38dwL.png', 'https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&hl=en_US&gl=US', 'DuckDuckGo Privacy Browser', 'DuckDuckGo', 'Android', 0.0, 'https://i.imgur.com/W7COvtX.jpg', 'v5.69', 1),
+(26, 0, 'tools', 'Translate between 103 languages by typing, photos, conversations and handwriting.', 'https://i.imgur.com/OqT92iy.png', 'https://play.google.com/store/apps/details?id=com.google.android.apps.translate&hl=en_US&gl=US', 'Google Translater', 'Google LLC', 'Android', 0.0, 'https://i.imgur.com/D9ADo7a.jpg', 'v6.13.0.03', 1),
+(27, 0, 'education', 'Access your Canvas courses on the go with the Canvas Student mobile app!', 'https://i.imgur.com/B1HsZG4.png', 'https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en_US&gl=US', 'Canvas Student', 'Instructure', 'Android', 0.0, 'https://i.imgur.com/urY9vCL.jpg', 'v6.9.2', 1),
+(28, 0, 'education', 'Canvas Teacher allows teachers to facilitate their courses on the go, both inside and outside the classroom.', 'https://i.imgur.com/DK7ANUT.png', 'https://play.google.com/store/apps/details?id=com.instructure.teacher&hl=en_US&gl=US', 'Canvas Teacher', 'Instructure', 'Android', 0.0, 'https://i.imgur.com/Pa1nic5.jpg', 'v1.11.4', 1),
+(29, 0, 'education', 'Canvas Parent is designed to provide visibility into your child education at a glance', 'https://i.imgur.com/cQMAQSl.png', 'https://play.google.com/store/apps/details?id=com.instructure.parentapp&hl=en_US&gl=US', 'Canvas Parent', 'Instructure', 'Android', 0.0, 'https://i.imgur.com/570cbqK.jpg', 'v3.3.0', 1);
+
+INSERT INTO comment(id, content, created_date, application_id, comment_id, user_id) VALUES
+(1, 'This is an awesome app', '2020-11-10 10:00:00', 1, null, 1), 
+(2, 'I agree!', '2020-11-10 10:10:10', 1, 1, 2),
+(3, 'Me too!', '2020-11-10 10:10:12', 1, 2, 3),
+(4, 'Love from Vietnam', '2020-11-10 11:00:00', 1, null, 1),
+(5, 'Hello from China!', '2020-11-10 11:10:10', 1, 4, 2);
 
