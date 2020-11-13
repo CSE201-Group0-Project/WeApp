@@ -1,11 +1,9 @@
 #!/bin/bash
 echo 'Running script'
-rm -rf WeApp
-mkdir WeApp
 git clone https://github.com/CSE201-Group0-Project/WeApp.git
-git pull
-echo 'Finished cloning'
-echo 'All Web Files:'
-ls WeApp/*.php
-echo 'All SQL Files:'
-ls WeApp/*.sql
+echo 'Finished cloning project'
+cd WeApp/WeApp
+echo 'Run maven wrapper'
+./mvnw clean install
+echo 'Run war file'
+java -jar target/WeApp-0.0.1-SNAPSHOT.war
