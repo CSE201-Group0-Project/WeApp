@@ -22,49 +22,57 @@ import com.weapp.service.ApplicationService;
 
 @Controller
 public class ApplicationAdminController {
-	  
-  @Autowired
-  private ApplicationService appService;
-  
-  @GetMapping("/applications") 
-  public String getApplications(ModelMap model) {
-	  List<Application> applications = appService.findAll(); 
-	  model.put("applications", applications);
-	  return "index"; 
-  }
-  
-  @GetMapping("/applications/{applicationId}")
-  public String getApplication(@PathVariable int applicationId, ModelMap model, HttpServletResponse response) throws IOException {
-	Optional<Application> appOpt = appService.findById(applicationId);
-    
-    if (appOpt.isPresent()) {
-      Application application = appOpt.get();
-      model.addAttribute("application", application);
-    } else {
-      response.sendError(HttpStatus.NOT_FOUND.value(), "Application with id " + applicationId + " was not found");
-      return "application";
-    }   
-    return "application";
-  }
-  
-  @PostMapping("/applications/{applicationId}")
-  public String saveApplication(@PathVariable int applicationId, Application application) {
-    application = appService.save(application);
-    
-    return "redirect:/applications/" + application.getId();
-  }
 
-  
-  @PostMapping("/applications")
-  public String createApplication(@AuthenticationPrincipal User user) {
-	System.out.println(user.getId());
-	Application application = new Application();
-    
-	application.setApproved(false);
-	application.setUser(user);
+	@Autowired
+	private ApplicationService appService;
 
-	application = appService.save(application);
-    
-    return "redirect:/applications/" + application.getId();
-  }
+	@GetMapping("/applications") 
+	public String getApplications(ModelMap model) {
+		List<Application> applications = appService.findAll(); 
+		model.put("applications", applications);
+		return "dashboard"; 
+	}
+
+	@GetMapping("/applicationRequest") 
+	public String getApplicationRequest(ModelMap model) {
+		model.addAttribute(new Application()); 
+		return "request-application"; 
+	}
+
+	@GetMapping("/applications/{applicationId}")
+	public String getApplication(@PathVariable int applicationId, ModelMap model, HttpServletResponse response) throws IOException {
+		Optional<Application> appOpt = appService.findById(applicationId);
+
+		if (appOpt.isPresent()) {
+			Application application = appOpt.get();
+			model.addAttribute("application", application);
+		} else {
+			response.sendError(HttpStatus.NOT_FOUND.value(), "Application with id " + applicationId + " was not found");
+			return "edit-application";
+		}   
+		return "edit-application";
+	}
+
+	@PostMapping("/applications/{applicationId}")
+	public String editApplication(@PathVariable int applicationId, Application application) {
+		appService.save(application);  
+		System.out.println(application.toString());
+		return "redirect:/dashboard";
+
+	}
+
+	@GetMapping("/applications/{applicationId}/delete")
+	public String deleteApplication(@PathVariable int applicationId, Application application) {
+		appService.findById(applicationId)
+		.orElseThrow(() -> new IllegalArgumentException("Invalid application id:" + applicationId));
+		appService.deleteApplication(applicationId);
+		return "redirect:/applications";
+	}
+
+	@PostMapping("save")
+	public String saveApplication(@AuthenticationPrincipal User user, Application application) {
+		application.setUser(user);
+		appService.save(application);
+		return "redirect:/dashboard"; 
+	}
 }

@@ -56,14 +56,15 @@
     <div class="starter-template container"> 
     <div class="card bg-light mb-3 mx-auto" style="max-width: 50rem;">  
 	    <div class="card-body">   
-	     <h1 th:text="${application.name}" class="card-title text-center">Application Request</h1>
-	      <form action="" method="post" class="needs-validation" novalidate>
+	     <h1 class="card-title text-center mb-5">Application Request</h1>
+	      <form action="" th:object="${application}" method="post" class="needs-validation text-left" novalidate>
 	        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 	        <input type="hidden" th:field="${application.id}"/>
+	        <input type="hidden" th:field="${application.user}"/>
 	        <div class="form-group row">
 	          <label for="name" class="col-12 col-sm-3 col-md-2 col-form-label">Name:</label> 
 	          <div class="col-12 col-sm-9 col-md-10">
-	            <input type="text" class="form-control" th:field="${application.name}" placeholder="Enter your application's name" required>
+	            <input type="text" class="form-control" th:field="*{name}" placeholder="Enter your application's name" required>
 	            <div class="valid-feedback">
 		        	Looks good!
 		      	</div>
@@ -75,7 +76,7 @@
 	        <div class="form-group row">
 	          <label for="description" class="col-12 col-sm-3 col-md-2 col-form-label">Description:</label> 
 	          <div class="col-12 col-sm-9 col-md-10">
-	            <input type="text" class="form-control" th:field="${application.description}" placeholder="Enter description" required>
+	            <input type="text" class="form-control" th:field="*{description}" placeholder="Enter description" required>
 	            <div class="valid-feedback">
 		        	Looks good!
 		      	</div>
@@ -87,7 +88,7 @@
 	         <div class="form-group row">
 	          <label for="organization" class="col-12 col-sm-3 col-md-2 col-form-label">Organization:</label> 
 	          <div class="col-12 col-sm-9 col-md-10">
-	            <input type="text" class="form-control" th:field="${application.organization}" placeholder="Enter your organization's name" required>
+	            <input type="text" class="form-control" th:field="*{organization}" placeholder="Enter your organization's name" required>
 	            <div class="valid-feedback">
 		        	Looks good!
 		      	</div>
@@ -99,19 +100,31 @@
 			<div class="form-group row">
 	          <label for="platform" class="col-12 col-sm-3 col-md-2 col-form-label">Platform:</label> 
 	          <div class="col-12 col-sm-9 col-md-10">
-	            <input type="text" class="form-control" th:field="${application.platform}" placeholder="List platforms" required>
+	            <input type="text" class="form-control" th:field="*{platform}" placeholder="List platform" required>
 	            <div class="valid-feedback">
 		        	Looks good!
 		      	</div>
 		      	<div class="invalid-feedback">
-		          Please list at least one platform. 
+		          Please provide only one platform. 
+		        </div>
+	          </div>
+	        </div>
+	        <div class="form-group row">
+	          <label for="platform" class="col-12 col-sm-3 col-md-2 col-form-label">Category:</label> 
+	          <div class="col-12 col-sm-9 col-md-10">
+	            <input type="text" class="form-control" th:field="*{category}" placeholder="Enter category (e.g music, news, etc)" required>
+	            <div class="valid-feedback">
+		        	Looks good!
+		      	</div>
+		      	<div class="invalid-feedback">
+		          Please enter category. 
 		        </div>
 	          </div>
 	        </div>
 	        <div class="form-group row">
 	          <label for="version" class="col-12 col-sm-3 col-md-2 col-form-label">Version:</label> 
 	          <div class="col-12 col-sm-9 col-md-10">
-	            <input type="text" class="form-control" th:field="${application.version}" placeholder="Enter your application's version" required>
+	            <input type="text" class="form-control" th:field="*{version}" placeholder="Enter your application's version" required>
 	            <div class="valid-feedback">
 		        	Looks good!
 		      	</div>
@@ -123,7 +136,7 @@
 	        <div class="form-group row">
 	          <label for="link" class="col-12 col-sm-3 col-md-2 col-form-label">Link:</label> 
 	          <div class="col-12 col-sm-9 col-md-10">
-	            <input type="text" class="form-control" th:field="${application.link}" placeholder="Enter download link" required>
+	            <input type="text" class="form-control" th:field="*{link}" placeholder="Enter download link" required>
 	            <div class="valid-feedback">
 		        	Looks good!
 		      	</div>
@@ -135,7 +148,7 @@
 	        <div class="form-group row">
 	          <label for="price" class="col-12 col-sm-3 col-md-2 col-form-label">Price:</label> 
 	          <div class="col-12 col-sm-9 col-md-10">
-	            <input type="number" class="form-control" th:field="${application.price}" required>
+	            <input type="number" class="form-control" th:field="*{price}" required>
 	            <div class="valid-feedback">
 		        	Looks good!
 		      	</div>
@@ -144,12 +157,38 @@
 		        </div>
 	          </div>
 	        </div>
+	        <div class="form-group row">
+	          <label for="price" class="col-12 col-sm-3 col-md-2 col-form-label">Logo:</label> 
+	          <div class="col-12 col-sm-9 col-md-10">
+	            <input type="text" class="form-control" th:field="*{imgSrc}"
+	             pattern="(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)" placeholder="Enter logo URL" required>
+	            <div class="valid-feedback">
+		        	Looks good!
+		      	</div>
+		      	<div class="invalid-feedback">
+		          Please enter logo URL.
+		        </div>
+	          </div>
+	        </div>
+	        <div class="form-group row">
+	          <label for="price" class="col-12 col-sm-3 col-md-2 col-form-label">Screenshot:</label> 
+	          <div class="col-12 col-sm-9 col-md-10">
+	            <input type="text" class="form-control" th:field="*{screenshots}"
+	             placeholder="Enter screenshots URL (comma separated)" required>
+	            <div class="valid-feedback">
+		        	Looks good!
+		      	</div>
+		      	<div class="invalid-feedback">
+		          Please enter screenshots URL.
+		        </div>
+	          </div>
+	        </div>
 	        
-	        <div class="custom-control custom-switch mt-3">
-	          <input type="checkbox" class="custom-control-input" th:field="${application.approved}">
+	        <div class="custom-control custom-switch mt-3 text-center">
+	          <input type="checkbox" class="custom-control-input" th:field="*{approved}">
 	          <label class="custom-control-label" for="approved1">is approved</label>
 	        </div>
-	        <div class="mt-5">
+	        <div class="mt-5 text-center">
 	        	<button class="btn btn-primary btn-lg">Submit request</button>
 	        	<a href="/dashboard" class="btn btn-secondary btn-lg">Back</a>
 	        </div>

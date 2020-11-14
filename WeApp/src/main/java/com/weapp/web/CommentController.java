@@ -20,45 +20,55 @@ import com.weapp.domain.Comment;
 import com.weapp.domain.User;
 import com.weapp.repositories.ApplicationRepository;
 import com.weapp.repositories.CommentRepository;
+import com.weapp.service.ApplicationService;
+import com.weapp.service.CommentService;
 
 @Controller
 @RequestMapping("/app/{applicationId}/comments")
 public class CommentController {
 
 	@Autowired 
-	public CommentRepository commentRepo; 
+	public CommentService commentService; 
 
 	@Autowired
-	public ApplicationRepository appRepo; 
+	public ApplicationService appService; 
 
 	@GetMapping("")
 	@ResponseBody
 	public List<Comment> getComments (@PathVariable Integer applicationId) {
 
-		List<Comment> findByApplicationId = commentRepo.findByApplicationId(applicationId);
+		List<Comment> findByApplicationId = commentService.findByApplicationId(applicationId);
 		System.out.println(findByApplicationId);
 		return findByApplicationId;
 	}
-
+	
+	@GetMapping("/{commentId}/delete")
+	public String deleteComment(@PathVariable int applicationId, @PathVariable int commentId, Comment comment) {
+		commentService.findById(commentId)
+		.orElseThrow(() -> new IllegalArgumentException("Invalid comment id:" + commentId));
+		commentService.deleteComment(commentId);
+		return "redirect:/app/" + applicationId; 
+	}
+	
 	@PostMapping("")
 	public String postComment(@AuthenticationPrincipal User user, @PathVariable Integer applicationId
 			,Comment rootComment, @RequestParam(required=false) Integer parentId,
 			@RequestParam(required=false) String childCommentText) {
-		Optional<Application> appOpt = appRepo.findById(applicationId);
+		Optional<Application> appOpt = appService.findById(applicationId);
 		// save a root level comment here
 		if (!StringUtils.isEmpty(rootComment.getContent())) {
 			populateCommentData(user, appOpt, rootComment);
-			commentRepo.save(rootComment);
+			commentService.save(rootComment);
 		}
 		// save a child level comment here 
 		else if (parentId != null) {
 			Comment comment = new Comment();
-			Optional<Comment> parentCommentOpt = commentRepo.findById(parentId);
+			Optional<Comment> parentCommentOpt = commentService.findById(parentId);
 			if (parentCommentOpt.isPresent())
 				comment.setComment(parentCommentOpt.get());
 			comment.setContent(childCommentText);
 			populateCommentData(user, appOpt, comment);
-			commentRepo.save(comment);
+			commentService.save(comment);
 		} 
 
 		return "redirect:/app/" + applicationId; 

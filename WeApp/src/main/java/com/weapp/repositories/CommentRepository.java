@@ -8,4 +8,5 @@ import com.weapp.domain.Comment;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer>{
 	List<Comment> findByApplicationId(int applicationId); 
+	
 }

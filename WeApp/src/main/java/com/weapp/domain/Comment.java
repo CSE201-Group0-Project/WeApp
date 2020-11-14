@@ -2,6 +2,7 @@ package com.weapp.domain;
 
 import java.util.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -84,7 +85,7 @@ public class Comment implements Comparable<Comment>{
 		this.createdDate = createdDate;
 	}
 
-	@OneToMany(mappedBy="comment")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="comment")
 	@OrderBy("createdDate, id")
 	public SortedSet<Comment> getComments() {
 		return comments;
