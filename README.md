@@ -19,5 +19,7 @@ In eclipse Project Explorer, right click the project
 Select "Run As" -> "Spring Boot App"
 ```
 If "Spring Boot App" option doesn't show up, here is alternative:
+```
 Select "Run As" -> "Maven Build..." -> In the goals, enter "spring-boot:run" -> click Run button
+```
 
