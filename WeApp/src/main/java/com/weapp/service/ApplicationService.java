@@ -60,6 +60,10 @@ public class ApplicationService {
 		return appRepo.findByKeyword(keyword); 
 	}
 	
+	public List<Application> findByKeywordForAdmin(String keyword) {
+		return appRepo.findByKeywordForAdmin(keyword);
+	}
+	
 	public Application save(Application application) {
 		return appRepo.save(application); 
 	}

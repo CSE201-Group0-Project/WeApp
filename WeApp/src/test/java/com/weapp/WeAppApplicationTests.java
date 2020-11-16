@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.weapp.web.ApplicationAdminController;
 import com.weapp.web.ApplicationUserController;
-import com.weapp.web.DashboardController;
+import com.weapp.web.UserViewController;
 import com.weapp.web.LoginController;
 
 @SpringBootTest
@@ -24,7 +24,7 @@ class WeAppApplicationTests {
 	private ApplicationAdminController applicationAdminController;
 	
 	@Autowired
-	private DashboardController dashboardController;
+	private UserViewController dashboardController;
 
 	@Test
 	void contextLoads() {

@@ -14,7 +14,7 @@ import com.weapp.repositories.ApplicationRepository;
 import com.weapp.service.ApplicationService;
 
 @Controller
-public class DashboardController {
+public class UserViewController {
 
 
 	@Autowired
@@ -31,8 +31,12 @@ public class DashboardController {
 			if(sortBy.equals("name")) {
 				applications = appService.findByOrderByNameAsc();
 				model.addAttribute("applications", applications);
-				model.addAttribute("sortBy", sortBy);
+				model.addAttribute("sortByValue", sortBy);
 			} 
+			if(sortBy.equals("")) {
+				applications = appService.findByApproved(true);
+				model.addAttribute("applications", applications);
+			}
 		} else {
 			applications = appService.findByApproved(true);
 			model.put("applications", applications);

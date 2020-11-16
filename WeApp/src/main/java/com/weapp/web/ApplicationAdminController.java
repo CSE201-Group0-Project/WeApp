@@ -1,12 +1,14 @@
 package com.weapp.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.weapp.domain.Application;
 import com.weapp.domain.User;
-import com.weapp.repositories.ApplicationRepository;
 import com.weapp.service.ApplicationService;
 
 @Controller
@@ -27,9 +28,16 @@ public class ApplicationAdminController {
 	private ApplicationService appService;
 
 	@GetMapping("/applications") 
-	public String getApplications(ModelMap model) {
-		List<Application> applications = appService.findAll(); 
-		model.put("applications", applications);
+	public String getApplications(ModelMap model, @Param("keyword") String keyword) {
+		List<Application> applications = new ArrayList<>(); 
+		if(keyword != null) {
+			applications = appService.findByKeywordForAdmin(keyword); 
+			model.addAttribute("applications", applications);
+			model.addAttribute("keyword", keyword);
+		} else {
+			applications = appService.findAll(); 
+			model.put("applications", applications);
+		}
 		return "dashboard"; 
 	}
 
