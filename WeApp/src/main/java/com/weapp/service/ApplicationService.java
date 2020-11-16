@@ -64,6 +64,10 @@ public class ApplicationService {
 		return appRepo.findByKeywordForAdmin(keyword);
 	}
 	
+	public List<String> findDistinctCategory() {
+		return appRepo.findDistinctCategory();
+	}
+	
 	public Application save(Application application) {
 		return appRepo.save(application); 
 	}

@@ -21,8 +21,11 @@ public class UserViewController {
 	private ApplicationService appService;
 
 	@GetMapping("/")
-	public String rootView (ModelMap model, @Param("keyword") String keyword, @Param("sortBy") String sortBy) {
+	public String rootView (ModelMap model, @Param("keyword") String keyword, @Param("sortBy") String sortBy, 
+			@Param("filterBy") String category) {
 		List<Application> applications = new ArrayList<>(); 
+		List<String> categories = appService.findDistinctCategory(); 
+		model.put("categories", categories); 
 		if(keyword != null) {
 			applications = appService.findByKeyword(keyword); 
 			model.addAttribute("applications", applications);
@@ -37,7 +40,11 @@ public class UserViewController {
 				applications = appService.findByApproved(true);
 				model.addAttribute("applications", applications);
 			}
-		} else {
+		} else if(category != null) {
+			applications = appService.findByCategory(category); 
+			model.addAttribute("applications", applications);
+		}		
+		else {
 			applications = appService.findByApproved(true);
 			model.put("applications", applications);
 		}

@@ -55,4 +55,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 			+ " or lower(a.description) like lower(concat('%',:keyword,'%'))")
 	List<Application> findByKeywordForAdmin(@Param("keyword") String keyword); 
 	
+	@Query("SELECT DISTINCT a.category FROM Application a WHERE a.approved = true")
+    List<String> findDistinctCategory();
+	
 }
