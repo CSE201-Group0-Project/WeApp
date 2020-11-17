@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -27,7 +27,7 @@ public class UserRepositoryIntegrationTest {
     private UserRepository userRepository;
 	
     @Test
-    public void whenFindByUsername_thenReturnUser() {
+    void whenFindByUsername_thenReturnUser() {
         // given
         User amy = new User();
         amy.setUsername("amynguyen.tech@jojo.com");
@@ -43,7 +43,7 @@ public class UserRepositoryIntegrationTest {
     }
     
     @Test
-    public void whenFindByName_thenReturnUser() {
+    void whenFindByName_thenReturnUser() {
         // given
         User mockUser1 = new User();
         mockUser1.setName("amy");
@@ -66,7 +66,7 @@ public class UserRepositoryIntegrationTest {
     }
     
     @Test 
-    public void whenSuccessFullySaveUser() {
+    void whenSuccessFullySaveUser() {
     	 // given
         User mockUser1 = new User();
         mockUser1.setName("amy");

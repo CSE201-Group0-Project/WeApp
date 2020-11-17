@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -30,7 +30,7 @@ public class ApplicationRepositoryIntegrationTest {
 	private ApplicationRepository applicationRepository;
 
 	@Test
-	public void whenFindByName_thenReturnApplications() {
+	void whenFindByName_thenReturnApplications() {
 		// given
 		Application dummy1 = new Application();
 		dummy1.setName("Cook");
@@ -55,7 +55,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void whenFindByOrganization_thenReturnApplications() {
+	void whenFindByOrganization_thenReturnApplications() {
 		// given
 		Application dummy1 = new Application();
 		dummy1.setOrganization("No name");
@@ -80,7 +80,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void whenFindByVersion_thenReturnApplications() {
+	void whenFindByVersion_thenReturnApplications() {
 		// given
 		Application dummy1 = new Application();
 		dummy1.setVersion("v1");
@@ -103,7 +103,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void whenFindByApproved_thenReturnApplications() {
+	void whenFindByApproved_thenReturnApplications() {
 		// given
 		Application dummy1 = new Application();
 		Application dummy2 = new Application();
@@ -126,7 +126,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void whenFindByCategory_thenReturnApplications() {
+	void whenFindByCategory_thenReturnApplications() {
 		// given
 		Application dummy1 = new Application();
 		dummy1.setCategory("dummy");
@@ -151,7 +151,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void whenFindByPlatform_thenReturnApplications() {
+	void whenFindByPlatform_thenReturnApplications() {
 		// given
 		Application dummy1 = new Application();
 		dummy1.setPlatform("dummy");
@@ -176,7 +176,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void whenFindByUser_thenReturnApplications() {
+	void whenFindByUser_thenReturnApplications() {
 		// given
 		User user1 = new User(); 
 		Application dummy1 = new Application();
@@ -201,7 +201,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void whenFindByKeyword_thenReturnApplications() {
+	void whenFindByKeyword_thenReturnApplications() {
 		// given
 		Application dummy1 = new Application();
 		dummy1.setPlatform("dummy");
@@ -240,7 +240,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void whenFindByKeywordForAdmin_thenReturnApplications() {
+	void whenFindByKeywordForAdmin_thenReturnApplications() {
 		// given
 		Application dummy1 = new Application();
 		dummy1.setPlatform("dummy");
@@ -274,7 +274,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 
 	@Test
-	public void whenFindByOrderByPriceDesc_thenReturnApplications() {
+	void whenFindByOrderByPriceDesc_thenReturnApplications() {
 		List<Application> unsortedList = applicationRepository.findByApproved(true); 
 		
 		Collections.sort(unsortedList,new Comparator<Application>() {
@@ -292,7 +292,7 @@ public class ApplicationRepositoryIntegrationTest {
 	}
 	
 	@Test
-	public void whenFindByOrderByNameAsc_thenReturnApplications() {
+	void whenFindByOrderByNameAsc_thenReturnApplications() {
 		List<Application> unsortedList = applicationRepository.findByApproved(true); 
 		
 		Collections.sort(unsortedList,new Comparator<Application>() {

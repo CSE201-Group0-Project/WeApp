@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -31,7 +31,7 @@ public class CommentRepositoryIntegrationTest {
 	private CommentRepository commentRepo;
 	
 	@Test
-	public void whenFindByUserId_thenReturnComments() {
+	void whenFindByUserId_thenReturnComments() {
 		Comment dummy1 = new Comment(); 
 		Comment dummy2 = new Comment(); 
 		User dummyUser = new User(); 
@@ -56,7 +56,7 @@ public class CommentRepositoryIntegrationTest {
 	}
 	
 	@Test
-	public void whenFindByApplicationId_thenReturnComments() {
+	void whenFindByApplicationId_thenReturnComments() {
 		Comment dummy1 = new Comment(); 
 		Comment dummy2 = new Comment(); 
 		Application dummyApp = new Application(); 
@@ -81,7 +81,7 @@ public class CommentRepositoryIntegrationTest {
 	}
 	
 	@Test
-	public void whenFindByOrderByCreatedDateDesc_thenReturnComments() {
+	void whenFindByOrderByCreatedDateDesc_thenReturnComments() {
 		List<Comment> unsortedList = commentRepo.findAll();
 		
 		Collections.sort(unsortedList,new Comparator<Comment>() {
@@ -100,7 +100,7 @@ public class CommentRepositoryIntegrationTest {
 	}
 	
 	@Test
-	public void whenFindByOrderByCreatedDateAsc_thenReturnComments() {
+	void whenFindByOrderByCreatedDateAsc_thenReturnComments() {
 		List<Comment> unsortedList = commentRepo.findAll();
 		
 		Collections.sort(unsortedList,new Comparator<Comment>() {

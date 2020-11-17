@@ -5,7 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,7 +26,7 @@ public class LoginControllerTest {
 
 
 	@Test
-	public void testGetLogin() throws Exception {
+	void testGetLogin() throws Exception {
         this.mockMvc.perform(get("/login"))
 	        		.andExpect(view().name("login"))
 	                .andExpect(status().isOk())
@@ -35,7 +35,7 @@ public class LoginControllerTest {
 	}
 	
 	@Test
-	public void testGetRegister() throws Exception {
+	void testGetRegister() throws Exception {
 		User user = mock(User.class);
 		this.mockMvc.perform(get("/register")
 					.flashAttr("user", user))
