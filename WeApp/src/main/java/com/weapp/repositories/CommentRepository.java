@@ -9,4 +9,12 @@ import com.weapp.domain.Comment;
 public interface CommentRepository extends JpaRepository<Comment, Integer>{
 	List<Comment> findByApplicationId(int applicationId); 
 	
+	List<Comment> findByUserId(int userId); 
+	
+	List<Comment> findByOrderByCreatedDateDesc(); 
+	
+	List<Comment> findByOrderByCreatedDateAsc(); 
+	
+	List<Comment> findAll(); 
+	
 }

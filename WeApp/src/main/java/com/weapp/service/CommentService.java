@@ -30,5 +30,17 @@ public class CommentService {
 	public void deleteComment(int id) {
 		commentRepo.deleteById(id);
 	}
+	
+	public List<Comment> findByUserId(int userId) {
+		return commentRepo.findByUserId(userId);
+	}
+	
+	public List<Comment> findByOrderByCreatedDateAsc() {
+		return commentRepo.findByOrderByCreatedDateAsc();
+	}
+	
+	public List<Comment> findByOrderByCreatedDateDesc() {
+		return commentRepo.findByOrderByCreatedDateDesc();
+	}
 
 }
