@@ -22,11 +22,12 @@ public class UserViewController {
 	private ApplicationService appService;
 
 	@GetMapping("/")
-	public String rootView (ModelMap model, @Param("keyword") String keyword, @Param("sortBy") String sortBy, 
-			@Param("filterBy") String category) {
+	public String rootView (ModelMap model, @Param("keyword") String keyword, @Param("sortBy") String sortBy) {
 		List<Application> applications = new ArrayList<>(); 
 		List<String> categories = appService.findDistinctCategory(); 
+		List<String> platforms = appService.findDistinctPlatform(); 
 		model.put("categories", categories); 
+		model.put("platforms", platforms);
 		if(keyword != null) {
 			applications = appService.findByKeyword(keyword); 
 			model.addAttribute("applications", applications);
@@ -46,10 +47,7 @@ public class UserViewController {
 				applications = appService.findByApproved(true);
 				model.addAttribute("applications", applications);
 			}
-		} else if(category != null) {
-			applications = appService.findByCategory(category); 
-			model.addAttribute("applications", applications);
-		}		
+		} 		
 		else {
 			applications = appService.findByApproved(true);
 			model.put("applications", applications);
@@ -59,13 +57,27 @@ public class UserViewController {
 	}
 
 	@GetMapping("/c/{category}")
-	public String filterdBy(ModelMap model, @PathVariable String category) {
+	public String filterdByCategory(ModelMap model, @PathVariable String category) {
 		List<Application> applications = appService.findByCategory(category); 
 		List<String> categories = appService.findDistinctCategory(); 
+		List<String> platforms = appService.findDistinctPlatform(); 
 		model.put("categories", categories); 
+		model.put("platforms", platforms); 
 		model.put("applications", applications);
 		return "index"; 
 	}
+
+	@GetMapping("/p/{platform}")
+	public String filterdByPlatform(ModelMap model, @PathVariable String platform) {
+		List<Application> applications = appService.findByPlatform(platform);
+		List<String> categories = appService.findDistinctCategory(); 
+		List<String> platforms = appService.findDistinctPlatform(); 
+		model.put("categories", categories); 
+		model.put("platforms", platforms);
+		model.put("applications", applications);
+		return "index"; 
+	}
+
 
 	@GetMapping("/dashboard")
 	public String dashboard(ModelMap model) {

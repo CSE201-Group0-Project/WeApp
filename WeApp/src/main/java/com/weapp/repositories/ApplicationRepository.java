@@ -48,6 +48,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	@Query("SELECT a FROM Application a WHERE lower(a.name) = lower(:keyword)"
 			+ " or lower(a.category) = lower(:keyword)"
 			+ " or lower(a.platform) = lower(:keyword)"
+			+ " or lower(a.organization) like lower(concat('%',:keyword,'%'))"
 			+ " or lower(a.description) like lower(concat('%',:keyword,'%'))"
 			+ " and a.approved = true")
 	List<Application> findByKeyword(@Param("keyword") String keyword); 
@@ -55,10 +56,14 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	@Query("SELECT a FROM Application a WHERE lower(a.name) = lower(:keyword)"
 			+ " or lower(a.category) = lower(:keyword)"
 			+ " or lower(a.platform) = lower(:keyword)"
+			+ " or lower(a.organization) like lower(concat('%',:keyword,'%'))"
 			+ " or lower(a.description) like lower(concat('%',:keyword,'%'))")
 	List<Application> findByKeywordForAdmin(@Param("keyword") String keyword); 
 	
 	@Query("SELECT DISTINCT a.category FROM Application a WHERE a.approved = true")
     List<String> findDistinctCategory();
+	
+	@Query("SELECT DISTINCT a.platform FROM Application a WHERE a.approved = true")
+    List<String> findDistinctPlatform();
 	
 }

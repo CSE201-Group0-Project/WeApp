@@ -72,6 +72,10 @@ public class ApplicationService {
 		return appRepo.findDistinctCategory();
 	}
 	
+	public List<String> findDistinctPlatform() {
+		return appRepo.findDistinctPlatform();
+	}
+	
 	public Application save(Application application) {
 		return appRepo.save(application); 
 	}
