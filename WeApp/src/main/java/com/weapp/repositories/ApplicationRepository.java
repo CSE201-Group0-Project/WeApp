@@ -42,6 +42,9 @@ public interface ApplicationRepository extends JpaRepository<Application, Intege
 	@Query("SELECT a FROM Application a WHERE a.approved = true ORDER BY name ASC")
 	List<Application> findByOrderByNameAsc(); 
 	
+	@Query("SELECT a FROM Application a WHERE a.approved = true ORDER BY price DESC")
+	List<Application> findByOrderByPriceDesc(); 
+	
 	@Query("SELECT a FROM Application a WHERE lower(a.name) = lower(:keyword)"
 			+ " or lower(a.category) = lower(:keyword)"
 			+ " or lower(a.platform) = lower(:keyword)"

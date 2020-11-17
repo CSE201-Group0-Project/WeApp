@@ -19,6 +19,7 @@ body {
 }
 .card {
 	min-width: 13rem;
+	max-width: 16rem; 
 }
 #btnClear {
 	margin-right: 5px; 
@@ -72,7 +73,7 @@ body {
   text-transform: uppercase;
 }
 p {
-     width: 250px;
+     width: 230px;
      white-space: nowrap;
      overflow: hidden;
      text-overflow: ellipsis;

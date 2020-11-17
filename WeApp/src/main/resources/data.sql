@@ -8,12 +8,14 @@ INSERT INTO authority (id, authority, user_id) VALUES
 (2, 'ROLE_USER', 1),
 (3, 'ROLE_USER', 2),
 (4, 'ROLE_USER', 3),
-(5, 'ROLE_MOD', 1);
+(5, 'ROLE_MOD', 1),
+(6, 'ROLE_MOD', 3),
+(7, 'ROLE_ADMIN', 3);
 
 INSERT INTO application (id, approved, category, description, img_src, link, name, organization, platform, price, screenshots, version, user_id) VALUES
-(1, 1, 'messaging', 'A simple app that lets you text, video chat, and stay close with people you care about', 'https://i.imgur.com/e47wGWp.png', 'https://apps.apple.com/us/app/messenger/id454638411', 'Messenger', 'Facebook', 'IOS', 0.0, 'https://i.imgur.com/XMz9osB.jpg,https://i.imgur.com/KSUC7ws.jpg,https://i.imgur.com/mcU2Smv.jpg', 'v288.0', 1),
+(1, 1, 'sms', 'A simple app that lets you text, video chat, and stay close with people you care about', 'https://i.imgur.com/e47wGWp.png', 'https://apps.apple.com/us/app/messenger/id454638411', 'Messenger', 'Facebook', 'IOS', 0.0, 'https://i.imgur.com/XMz9osB.jpg,https://i.imgur.com/KSUC7ws.jpg,https://i.imgur.com/mcU2Smv.jpg', 'v288.0', 1),
 (2, 1, 'video', ' See what the world is watching -- from the hottest music videos to what’s trending in gaming, entertainment, news, and more', 'https://i.imgur.com/6mWTNSp.png', 'https://apps.apple.com/us/app/youtube/id544007664', 'Youtube', 'Google', 'IOS', 0.0, 'https://i.imgur.com/WxRiC3S.jpg,https://i.imgur.com/R2eCsgC.jpg,https://i.imgur.com/dL4Imzx.jpg', 'v15.43.4', 1),
-(3, 1, 'messaging', 'A popular app in China, you can text, video chat, and share your life in the WeChat', 'https://i.imgur.com/skSLi63.png', 'https://apps.apple.com/us/app/wechat/id414478124', 'WeChat', 'Tencent', 'IOS', 0.0,'', 'v7.0.17', 1),
+(3, 1, 'sms', 'A popular app in China, you can text, video chat, and share your life in the WeChat', 'https://i.imgur.com/skSLi63.png', 'https://apps.apple.com/us/app/wechat/id414478124', 'WeChat', 'Tencent', 'IOS', 0.0,'', 'v7.0.17', 1),
 (4, 1, 'social', 'An app which used worldwidely, you can text, share lives with this app', 'https://i.imgur.com/gqWL7zy.png', 'https://apps.apple.com/us/app/instagram/id389801252', 'Instagram', 'Facebook', 'IOS', 0.0,'', 'v165.0', 1),
 (5, 1, 'music', 'An app which can listen to music, MV, and share things to your friends. But it cannot use out of China', 'https://i.imgur.com/3PATcaE.png', 'https://apps.apple.com/cn/app/QQ音乐/id414603431', 'QQMusic', 'Tencent', 'IOS', 0.0,'', 'v8.9', 1),
 (6, 1, 'music', 'An app which listen to music, watching MV, and share things to your friends, and it can use out of China', 'https://i.imgur.com/fbBATq9.png', 'https://apps.apple.com/us/app/xiami-music/id595594905', 'XiamiMusic', 'MuzikTec', 'IOS', 0.0,'', 'v8.5.16', 1),
@@ -39,7 +41,8 @@ INSERT INTO application (id, approved, category, description, img_src, link, nam
 (26, 0, 'tools', 'Translate between 103 languages by typing, photos, conversations and handwriting.', 'https://i.imgur.com/OqT92iy.png', 'https://play.google.com/store/apps/details?id=com.google.android.apps.translate&hl=en_US&gl=US', 'Google Translater', 'Google LLC', 'Android', 0.0, 'https://i.imgur.com/D9ADo7a.jpg', 'v6.13.0.03', 3),
 (27, 0, 'education', 'Access your Canvas courses on the go with the Canvas Student mobile app!', 'https://i.imgur.com/B1HsZG4.png', 'https://play.google.com/store/apps/details?id=com.instructure.candroid&hl=en_US&gl=US', 'Canvas Student', 'Instructure', 'Android', 0.0, 'https://i.imgur.com/urY9vCL.jpg', 'v6.9.2', 3),
 (28, 0, 'education', 'Canvas Teacher allows teachers to facilitate their courses on the go, both inside and outside the classroom.', 'https://i.imgur.com/DK7ANUT.png', 'https://play.google.com/store/apps/details?id=com.instructure.teacher&hl=en_US&gl=US', 'Canvas Teacher', 'Instructure', 'Android', 0.0, 'https://i.imgur.com/Pa1nic5.jpg', 'v1.11.4', 3),
-(29, 0, 'education', 'Canvas Parent is designed to provide visibility into your child education at a glance', 'https://i.imgur.com/cQMAQSl.png', 'https://play.google.com/store/apps/details?id=com.instructure.parentapp&hl=en_US&gl=US', 'Canvas Parent', 'Instructure', 'Android', 0.0, 'https://i.imgur.com/570cbqK.jpg', 'v3.3.0', 3);
+(29, 0, 'education', 'Canvas Parent is designed to provide visibility into your child education at a glance', 'https://i.imgur.com/cQMAQSl.png', 'https://play.google.com/store/apps/details?id=com.instructure.parentapp&hl=en_US&gl=US', 'Canvas Parent', 'Instructure', 'Android', 0.0, 'https://i.imgur.com/570cbqK.jpg', 'v3.3.0', 3), 
+(30, 1, 'photo', 'CamScanner is the best scanner app that will turn your phone into a PDF scanner. Convert images to pdf in a simple tap.', 'https://i.imgur.com/v6YERXZ.png',  'https://apps.apple.com/us/app/camscanner-pdf-scanner-app/id388627783', 'CamScanner', 'Linguan Data', 'IOS', '2.99', 'https://i.imgur.com/IuJdfrK.jpg,https://i.imgur.com/M5d7CRn.jpg,https://i.imgur.com/XvLpZpl.jpg', 'v5.25.3', 3); 
 
 INSERT INTO comment(id, content, created_date, application_id, comment_id, user_id) VALUES
 (1, 'This is an awesome app', '2020-11-10 10:00:00', 1, null, 1), 

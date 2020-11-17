@@ -56,6 +56,10 @@ public class ApplicationService {
 		return appRepo.findByOrderByNameAsc(); 
 	}
 	
+	public List<Application> findByOrderByPriceDesc() {
+		return appRepo.findByOrderByPriceDesc();
+	}
+	
 	public List<Application> findByKeyword(String keyword) {
 		return appRepo.findByKeyword(keyword); 
 	}

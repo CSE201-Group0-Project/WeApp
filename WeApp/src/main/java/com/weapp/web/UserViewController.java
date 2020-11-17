@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.weapp.domain.Application;
 import com.weapp.repositories.ApplicationRepository;
@@ -36,6 +37,11 @@ public class UserViewController {
 				model.addAttribute("applications", applications);
 				model.addAttribute("sortByValue", sortBy);
 			} 
+			if(sortBy.equals("price")) {
+				applications = appService.findByOrderByPriceDesc();
+				model.addAttribute("applications", applications);
+				model.addAttribute("sortByValue", sortBy);
+			}
 			if(sortBy.equals("")) {
 				applications = appService.findByApproved(true);
 				model.addAttribute("applications", applications);
@@ -49,6 +55,15 @@ public class UserViewController {
 			model.put("applications", applications);
 		}
 
+		return "index"; 
+	}
+
+	@GetMapping("/c/{category}")
+	public String filterdBy(ModelMap model, @PathVariable String category) {
+		List<Application> applications = appService.findByCategory(category); 
+		List<String> categories = appService.findDistinctCategory(); 
+		model.put("categories", categories); 
+		model.put("applications", applications);
 		return "index"; 
 	}
 
