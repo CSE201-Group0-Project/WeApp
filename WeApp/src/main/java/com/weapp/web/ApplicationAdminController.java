@@ -23,7 +23,7 @@ import com.weapp.service.ApplicationService;
 
 @Controller
 public class ApplicationAdminController {
-
+	
 	@Autowired
 	private ApplicationService appService;
 

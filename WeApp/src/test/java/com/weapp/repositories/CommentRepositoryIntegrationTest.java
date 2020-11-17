@@ -22,7 +22,7 @@ import com.weapp.domain.User;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=AutoConfigureTestDatabase.Replace.NONE)
-public class CustomerRepositoryIntegrationTest {
+public class CommentRepositoryIntegrationTest {
 	
 	@Autowired
 	private TestEntityManager entityManager;

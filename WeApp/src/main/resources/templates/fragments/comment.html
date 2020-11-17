@@ -10,7 +10,7 @@
         <div th:inline="text">
           <strong>[[${comment.user.name}]]</strong> - [[${#dates.format(comment.createdDate, 'MMM dd, yyyy h:mm a')}]] 
         <a sec:authorize="hasRole('ROLE_MOD')" th:href="@{/app/{applicationId}/comments/{commentId}/delete(applicationId=${app.id}, commentId=${comment.id})}" 
-        class="btn btn-danger btn-rounded btn-sm my-0 ml-5">
+        class="btn btn-danger btn-rounded btn-sm my-0 ml-5" onclick="return confirm('Are you sure?')">
         <i class="far fa-trash-alt"></i></a>
         </div>
         <span th:text="${comment.content}">Example comment</span>
