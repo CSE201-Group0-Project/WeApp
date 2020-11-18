@@ -14,13 +14,25 @@ import com.weapp.domain.Application;
 import com.weapp.repositories.ApplicationRepository;
 import com.weapp.service.ApplicationService;
 
+/**
+ * The Class UserViewController.
+ */
 @Controller
 public class UserViewController {
 
 
+	/** The app service. */
 	@Autowired
 	private ApplicationService appService;
 
+	/**
+	 * Root view.
+	 *
+	 * @param model the model
+	 * @param keyword the keyword
+	 * @param sortBy the sort by
+	 * @return the string
+	 */
 	@GetMapping("/")
 	public String rootView (ModelMap model, @Param("keyword") String keyword, @Param("sortBy") String sortBy) {
 		List<Application> applications = new ArrayList<>(); 
@@ -56,6 +68,13 @@ public class UserViewController {
 		return "index"; 
 	}
 
+	/**
+	 * Filterd by category.
+	 *
+	 * @param model the model
+	 * @param category the category
+	 * @return the string
+	 */
 	@GetMapping("/c/{category}")
 	public String filterdByCategory(ModelMap model, @PathVariable String category) {
 		List<Application> applications = appService.findByCategory(category); 
@@ -67,6 +86,13 @@ public class UserViewController {
 		return "index"; 
 	}
 
+	/**
+	 * Filterd by platform.
+	 *
+	 * @param model the model
+	 * @param platform the platform
+	 * @return the string
+	 */
 	@GetMapping("/p/{platform}")
 	public String filterdByPlatform(ModelMap model, @PathVariable String platform) {
 		List<Application> applications = appService.findByPlatform(platform);
@@ -79,6 +105,12 @@ public class UserViewController {
 	}
 
 
+	/**
+	 * Dashboard.
+	 *
+	 * @param model the model
+	 * @return the string
+	 */
 	@GetMapping("/dashboard")
 	public String dashboard(ModelMap model) {
 		List<Application> applications = appService.findAll(); 

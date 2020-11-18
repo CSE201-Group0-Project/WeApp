@@ -16,15 +16,25 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import com.weapp.domain.User;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LoginControllerTest.
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class LoginControllerTest {
 	
+    /** The mock mvc. */
     @Autowired
     private MockMvc mockMvc;
 
 
+	/**
+	 * Test get login.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testGetLogin() throws Exception {
         this.mockMvc.perform(get("/login"))
@@ -34,6 +44,11 @@ public class LoginControllerTest {
 	                .andReturn();
 	}
 	
+	/**
+	 * Test get register.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	void testGetRegister() throws Exception {
 		User user = mock(User.class);

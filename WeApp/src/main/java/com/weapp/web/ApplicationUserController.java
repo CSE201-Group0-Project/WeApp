@@ -21,14 +21,28 @@ import com.weapp.domain.Application;
 import com.weapp.domain.Comment;
 import com.weapp.service.ApplicationService;
 
+/**
+ * The Class ApplicationUserController.
+ */
 @Controller
 public class ApplicationUserController {
 
+	/** The log. */
 	Logger log = LoggerFactory.getLogger(ApplicationUserController.class); 
 
+	/** The app service. */
 	@Autowired
 	private ApplicationService appService; 
 
+	/**
+	 * App info view.
+	 *
+	 * @param applicationId the application id
+	 * @param model the model
+	 * @param response the response
+	 * @return the string
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@GetMapping("/app/{applicationId}")
 	public String appInfoView(@PathVariable int applicationId, ModelMap model, HttpServletResponse response) throws IOException {
 		Optional<Application> appOpt = appService.findById(applicationId);
@@ -47,6 +61,14 @@ public class ApplicationUserController {
 		return "appInfo";
 	}
 
+	/**
+	 * Gets the comments without duplicates.
+	 *
+	 * @param page the page
+	 * @param visitedComments the visited comments
+	 * @param comments the comments
+	 * @return the comments without duplicates
+	 */
 	private SortedSet<Comment> getCommentsWithoutDuplicates(int page, HashSet<Integer> visitedComments,
 			SortedSet<Comment> comments) {
 		page++;

@@ -13,18 +13,33 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
+/**
+ * The Class WebSecurityConfig.
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	/** The user details service. */
 	@Autowired 
 	private UserDetailsService userDetailsService;
 
+	/**
+	 * Gets the password encoder.
+	 *
+	 * @return the password encoder
+	 */
 	@Bean
 	public PasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder(); 
 	}
 	
+	/**
+	 * Configure.
+	 *
+	 * @param auth the auth
+	 * @throws Exception the exception
+	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
@@ -33,6 +48,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	}
 	
+	/**
+	 * Configure.
+	 *
+	 * @param http the http
+	 * @throws Exception the exception
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
@@ -48,9 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		    .logout()
 		      .logoutUrl("/logout")
 		      .permitAll();  
-		// this will ignore only h2-console csrf, spring security 4+
         http.csrf().ignoringAntMatchers("/h2-console/**");
-        //this will allow frames with same origin which is much more safe
         http.headers().frameOptions().sameOrigin();
         http.sessionManagement()
         	.sessionCreationPolicy(SessionCreationPolicy.ALWAYS);

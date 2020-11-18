@@ -15,17 +15,26 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.weapp.domain.User;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserRepositoryIntegrationTest.
+ */
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=AutoConfigureTestDatabase.Replace.NONE)
 public class UserRepositoryIntegrationTest {
 	
+	/** The entity manager. */
 	@Autowired
     private TestEntityManager entityManager;
  
+    /** The user repository. */
     @Autowired
     private UserRepository userRepository;
 	
+    /**
+     * When find by username then return user.
+     */
     @Test
     void whenFindByUsername_thenReturnUser() {
         // given
@@ -42,6 +51,9 @@ public class UserRepositoryIntegrationTest {
           .isEqualTo(amy.getUsername());
     }
     
+    /**
+     * When find by name then return user.
+     */
     @Test
     void whenFindByName_thenReturnUser() {
         // given
@@ -65,6 +77,9 @@ public class UserRepositoryIntegrationTest {
 
     }
     
+    /**
+     * When success fully save user.
+     */
     @Test 
     void whenSuccessFullySaveUser() {
     	 // given

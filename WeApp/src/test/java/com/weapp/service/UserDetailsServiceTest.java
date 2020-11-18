@@ -5,8 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserDetailsServiceTest.
+ */
 public class UserDetailsServiceTest {
 
+	/**
+	 * Generate encrypted password.
+	 */
 	@Test
 	void generateEncryptedPassword() {
 		

@@ -19,17 +19,26 @@ import com.weapp.domain.Application;
 import com.weapp.domain.Comment;
 import com.weapp.domain.User;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CommentRepositoryIntegrationTest.
+ */
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=AutoConfigureTestDatabase.Replace.NONE)
 public class CommentRepositoryIntegrationTest {
 	
+	/** The entity manager. */
 	@Autowired
 	private TestEntityManager entityManager;
 
+	/** The comment repo. */
 	@Autowired
 	private CommentRepository commentRepo;
 	
+	/**
+	 * When find by user id then return comments.
+	 */
 	@Test
 	void whenFindByUserId_thenReturnComments() {
 		Comment dummy1 = new Comment(); 
@@ -55,6 +64,9 @@ public class CommentRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 	
+	/**
+	 * When find by application id then return comments.
+	 */
 	@Test
 	void whenFindByApplicationId_thenReturnComments() {
 		Comment dummy1 = new Comment(); 
@@ -80,6 +92,9 @@ public class CommentRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 	
+	/**
+	 * When find by order by created date desc then return comments.
+	 */
 	@Test
 	void whenFindByOrderByCreatedDateDesc_thenReturnComments() {
 		List<Comment> unsortedList = commentRepo.findAll();
@@ -99,6 +114,9 @@ public class CommentRepositoryIntegrationTest {
 
 	}
 	
+	/**
+	 * When find by order by created date asc then return comments.
+	 */
 	@Test
 	void whenFindByOrderByCreatedDateAsc_thenReturnComments() {
 		List<Comment> unsortedList = commentRepo.findAll();

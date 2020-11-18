@@ -18,17 +18,26 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.weapp.domain.Application;
 import com.weapp.domain.User;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ApplicationRepositoryIntegrationTest.
+ */
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=AutoConfigureTestDatabase.Replace.NONE)
 public class ApplicationRepositoryIntegrationTest {
 
+	/** The entity manager. */
 	@Autowired
 	private TestEntityManager entityManager;
 
+	/** The application repository. */
 	@Autowired
 	private ApplicationRepository applicationRepository;
 
+	/**
+	 * When find by name then return applications.
+	 */
 	@Test
 	void whenFindByName_thenReturnApplications() {
 		// given
@@ -54,6 +63,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 
+	/**
+	 * When find by organization then return applications.
+	 */
 	@Test
 	void whenFindByOrganization_thenReturnApplications() {
 		// given
@@ -79,6 +91,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 
+	/**
+	 * When find by version then return applications.
+	 */
 	@Test
 	void whenFindByVersion_thenReturnApplications() {
 		// given
@@ -102,6 +117,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 
+	/**
+	 * When find by approved then return applications.
+	 */
 	@Test
 	void whenFindByApproved_thenReturnApplications() {
 		// given
@@ -125,6 +143,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 
+	/**
+	 * When find by category then return applications.
+	 */
 	@Test
 	void whenFindByCategory_thenReturnApplications() {
 		// given
@@ -150,6 +171,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 
+	/**
+	 * When find by platform then return applications.
+	 */
 	@Test
 	void whenFindByPlatform_thenReturnApplications() {
 		// given
@@ -175,6 +199,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 
+	/**
+	 * When find by user then return applications.
+	 */
 	@Test
 	void whenFindByUser_thenReturnApplications() {
 		// given
@@ -200,6 +227,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 
+	/**
+	 * When find by keyword then return applications.
+	 */
 	@Test
 	void whenFindByKeyword_thenReturnApplications() {
 		// given
@@ -239,6 +269,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 
+	/**
+	 * When find by keyword for admin then return applications.
+	 */
 	@Test
 	void whenFindByKeywordForAdmin_thenReturnApplications() {
 		// given
@@ -273,6 +306,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(expRet);
 	}
 
+	/**
+	 * When find by order by price desc then return applications.
+	 */
 	@Test
 	void whenFindByOrderByPriceDesc_thenReturnApplications() {
 		List<Application> unsortedList = applicationRepository.findByApproved(true); 
@@ -291,6 +327,9 @@ public class ApplicationRepositoryIntegrationTest {
 		assertThat(results).isEqualTo(unsortedList);
 	}
 	
+	/**
+	 * When find by order by name asc then return applications.
+	 */
 	@Test
 	void whenFindByOrderByNameAsc_thenReturnApplications() {
 		List<Application> unsortedList = applicationRepository.findByApproved(true); 

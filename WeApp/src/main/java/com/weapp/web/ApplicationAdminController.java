@@ -21,12 +21,23 @@ import com.weapp.domain.Application;
 import com.weapp.domain.User;
 import com.weapp.service.ApplicationService;
 
+/**
+ * The Class ApplicationAdminController.
+ */
 @Controller
 public class ApplicationAdminController {
 	
+	/** The app service. */
 	@Autowired
 	private ApplicationService appService;
 
+	/**
+	 * Gets the applications.
+	 *
+	 * @param model the model
+	 * @param keyword the keyword
+	 * @return the applications
+	 */
 	@GetMapping("/applications") 
 	public String getApplications(ModelMap model, @Param("keyword") String keyword) {
 		List<Application> applications = new ArrayList<>(); 
@@ -41,12 +52,27 @@ public class ApplicationAdminController {
 		return "dashboard"; 
 	}
 
+	/**
+	 * Gets the application request.
+	 *
+	 * @param model the model
+	 * @return the application request
+	 */
 	@GetMapping("/applicationRequest") 
 	public String getApplicationRequest(ModelMap model) {
 		model.addAttribute(new Application()); 
 		return "request-application"; 
 	}
 
+	/**
+	 * Gets the application.
+	 *
+	 * @param applicationId the application id
+	 * @param model the model
+	 * @param response the response
+	 * @return the application
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@GetMapping("/applications/{applicationId}")
 	public String getApplication(@PathVariable int applicationId, ModelMap model, HttpServletResponse response) throws IOException {
 		Optional<Application> appOpt = appService.findById(applicationId);
@@ -61,6 +87,13 @@ public class ApplicationAdminController {
 		return "edit-application";
 	}
 
+	/**
+	 * Edits the application.
+	 *
+	 * @param applicationId the application id
+	 * @param application the application
+	 * @return the string
+	 */
 	@PostMapping("/applications/{applicationId}")
 	public String editApplication(@PathVariable int applicationId, Application application) {
 		appService.save(application);  
@@ -69,6 +102,13 @@ public class ApplicationAdminController {
 
 	}
 
+	/**
+	 * Delete application.
+	 *
+	 * @param applicationId the application id
+	 * @param application the application
+	 * @return the string
+	 */
 	@GetMapping("/applications/{applicationId}/delete")
 	public String deleteApplication(@PathVariable int applicationId, Application application) {
 		appService.findById(applicationId)
@@ -77,6 +117,13 @@ public class ApplicationAdminController {
 		return "redirect:/applications";
 	}
 
+	/**
+	 * Save application.
+	 *
+	 * @param user the user
+	 * @param application the application
+	 * @return the string
+	 */
 	@PostMapping("save")
 	public String saveApplication(@AuthenticationPrincipal User user, Application application) {
 		application.setUser(user);

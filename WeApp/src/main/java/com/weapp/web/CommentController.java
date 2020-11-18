@@ -23,16 +23,27 @@ import com.weapp.repositories.CommentRepository;
 import com.weapp.service.ApplicationService;
 import com.weapp.service.CommentService;
 
+/**
+ * The Class CommentController.
+ */
 @Controller
 @RequestMapping("/app/{applicationId}/comments")
 public class CommentController {
 
+	/** The comment service. */
 	@Autowired 
 	public CommentService commentService; 
 
+	/** The app service. */
 	@Autowired
 	public ApplicationService appService; 
 
+	/**
+	 * Gets the comments.
+	 *
+	 * @param applicationId the application id
+	 * @return the comments
+	 */
 	@GetMapping("")
 	@ResponseBody
 	public List<Comment> getComments (@PathVariable Integer applicationId) {
@@ -42,6 +53,14 @@ public class CommentController {
 		return findByApplicationId;
 	}
 	
+	/**
+	 * Delete comment.
+	 *
+	 * @param applicationId the application id
+	 * @param commentId the comment id
+	 * @param comment the comment
+	 * @return the string
+	 */
 	@GetMapping("/{commentId}/delete")
 	public String deleteComment(@PathVariable int applicationId, @PathVariable int commentId, Comment comment) {
 		commentService.findById(commentId)
@@ -50,6 +69,16 @@ public class CommentController {
 		return "redirect:/app/" + applicationId; 
 	}
 	
+	/**
+	 * Post comment.
+	 *
+	 * @param user the user
+	 * @param applicationId the application id
+	 * @param rootComment the root comment
+	 * @param parentId the parent id
+	 * @param childCommentText the child comment text
+	 * @return the string
+	 */
 	@PostMapping("")
 	public String postComment(@AuthenticationPrincipal User user, @PathVariable Integer applicationId
 			,Comment rootComment, @RequestParam(required=false) Integer parentId,
@@ -74,6 +103,13 @@ public class CommentController {
 		return "redirect:/app/" + applicationId; 
 	}
 
+	/**
+	 * Populate comment data.
+	 *
+	 * @param user the user
+	 * @param appOpt the app opt
+	 * @param comment the comment
+	 */
 	private void populateCommentData(User user, Optional<Application> appOpt, Comment comment) {
 		if(appOpt.isPresent()) {
 			comment.setApplication(appOpt.get());

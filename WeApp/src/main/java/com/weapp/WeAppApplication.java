@@ -8,13 +8,27 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * The Class WeAppApplication.
+ */
 @SpringBootApplication
 public class WeAppApplication {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(WeAppApplication.class, args);
 	}
 	
+	/**
+	 * Command line runner.
+	 *
+	 * @param ctx the ctx
+	 * @return the command line runner
+	 */
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
