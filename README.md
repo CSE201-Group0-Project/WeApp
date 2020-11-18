@@ -4,6 +4,12 @@ JoJo Technology's (CSE201 Group 0) App Repository
 WeApp is a repository of applications, which can be understand as a library of applications that is sortable and filterable based on different criteria. 
 WeApp is different from platform-specific stores in that it provides more information, includes user discussions, is user-driven, and allows cross-platform comparison.
 
+# Group Members 
+- Amy Nguyen 
+- Zhuoyue Sun
+- Xiaocheng Kang
+- Jiahao Zhang
+
 ## Running WeApp by terminal
 
 ```
@@ -14,11 +20,22 @@ java -jar target/WeApp-0.0.1-SNAPSHOT.war
 ```
 
 ## Running WeApp by Eclipse
+
+1. On the command line 
+
 ```
-In eclipse Project Explorer, right click the project
-Select "Run As" -> "Spring Boot App"
+git clone https://github.com/CSE201-Group0-Project/WeApp.git
 ```
-If "Spring Boot App" option doesn't show up, here is alternative:
+2. Inside Eclipse or Spring Tool Suite IDE
+```
+File -> Import -> Maven -> Existing Maven project
+```
+
+3. In STS, right click the project in project explorer 
+```
+Select "Run As" -> "Spring Boot app"
+```
+4. In Eclipse, right click the project in project explorer 
 ```
 Select "Run As" -> "Maven Build..." -> In the goals, enter "spring-boot:run" -> click Run button
 ```
