@@ -52,14 +52,14 @@
 	  </div>
       </div>
     </nav>
-    <main role="main" class="flex-shrink-0" th:if="${application != null}">
+    <main role="main" class="flex-shrink-0" th:if="${app != null}">
     <div class="starter-template container"> 
     <div class="card bg-light mb-3 mx-auto" style="max-width: 50rem;">  
 	    <div class="card-body">   
 	     <h1 class="card-title text-center mb-5">Application Request</h1>
-	      <form th:action="@{save}" th:object="${application}" method="post" class="needs-validation text-left" novalidate>
+	      <form th:action="@{save}" th:object="${app}" method="post" class="needs-validation text-left" novalidate>
 	        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-	        <input type="hidden" th:field="${application.id}"/>
+	        <input type="hidden" th:field="${app.id}"/>
 	        <div class="form-group row">
 	          <label for="name" class="col-12 col-sm-3 col-md-2 col-form-label">Name:</label> 
 	          <div class="col-12 col-sm-9 col-md-10">
