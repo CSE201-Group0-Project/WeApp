@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.web;
 
 import java.util.ArrayList;
@@ -14,6 +17,7 @@ import com.weapp.domain.Application;
 import com.weapp.repositories.ApplicationRepository;
 import com.weapp.service.ApplicationService;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class UserViewController.
  */

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.domain;
 
 import java.util.*;
@@ -17,8 +20,9 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+// TODO: Auto-generated Javadoc
 /**
- * Simple domain object representing a comment
+ * Simple domain object representing a comment.
  */
 @Entity
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
@@ -49,6 +53,18 @@ public class Comment implements Comparable<Comment>{
 	 * Instantiates a new comment.
 	 */
 	public Comment() {}
+	
+	
+	/**
+	 * Instantiates a new comment.
+	 *
+	 * @param id the id
+	 * @param content the content
+	 */
+	public Comment(Integer id, String content) {
+		this.id = id;
+		this.content = content;
+	}
 
 
 	/**

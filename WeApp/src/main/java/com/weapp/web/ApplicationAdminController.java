@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.web;
 
 import java.io.IOException;
@@ -21,6 +24,7 @@ import com.weapp.domain.Application;
 import com.weapp.domain.User;
 import com.weapp.service.ApplicationService;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationAdminController.
  */
@@ -60,7 +64,7 @@ public class ApplicationAdminController {
 	 */
 	@GetMapping("/applicationRequest") 
 	public String getApplicationRequest(ModelMap model) {
-		model.addAttribute(new Application()); 
+		model.addAttribute("app", new Application()); 
 		return "request-application"; 
 	}
 

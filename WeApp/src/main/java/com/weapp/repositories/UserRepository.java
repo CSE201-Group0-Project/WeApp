@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.repositories;
 
 import java.util.List;
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.weapp.domain.User;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is the repository class for User objects
  * All method names are compliant with Spring Data naming conventions
@@ -18,19 +22,19 @@ import com.weapp.domain.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 
 	/**
-	 * Retrieve User from the data store by username 
+	 * Retrieve User from the data store by username .
 	 *
-	 * @param username the username to search for 
-	 * @return the user if found 
+	 * @param username the username to search for
+	 * @return the user if found
 	 */
 	// @Query("SELECT u FROM User u WHERE u.name = :name")
 	User findByUsername(String username);
 	
 	/**
-	 * Retrieve a list of Users from the data store by name
+	 * Retrieve a list of Users from the data store by name.
 	 *
-	 * @param name the name to search for 
-	 * @return the list of users if found 
+	 * @param name the name to search for
+	 * @return the list of users if found
 	 */
 	List<User> findByName(String name);
 }

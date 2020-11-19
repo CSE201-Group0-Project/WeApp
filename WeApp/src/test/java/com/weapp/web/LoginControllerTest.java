@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.web;
 
 import static org.mockito.Mockito.mock;
@@ -12,7 +15,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import com.weapp.domain.User;
 
@@ -40,7 +42,6 @@ public class LoginControllerTest {
         this.mockMvc.perform(get("/login"))
 	        		.andExpect(view().name("login"))
 	                .andExpect(status().isOk())
-	                .andDo(MockMvcResultHandlers.print())
 	                .andReturn();
 	}
 	
@@ -56,7 +57,6 @@ public class LoginControllerTest {
 					.flashAttr("user", user))
 					.andExpect(view().name("register"))
 			        .andExpect(status().isOk())
-			        .andDo(MockMvcResultHandlers.print())
 			        .andReturn();
 	}
 

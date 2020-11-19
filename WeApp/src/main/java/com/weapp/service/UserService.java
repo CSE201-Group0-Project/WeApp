@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import com.weapp.domain.User;
 import com.weapp.repositories.UserRepository;
 import com.weapp.security.Authority;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class UserService.
  */

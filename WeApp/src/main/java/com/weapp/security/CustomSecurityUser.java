@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.security;
 
 import java.util.Set;
@@ -6,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.weapp.domain.User;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CustomSecurityUser.
  */

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.domain;
 
 import java.util.SortedSet;
@@ -13,37 +16,51 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+// TODO: Auto-generated Javadoc
 /**
- * Simple domain object representing an application
+ * Simple domain object representing an application.
  */
 @Entity
 public class Application {
 
 
+	/** The id. */
 	private int id; 
 	
+	/** The name. */
 	private String name; 
 	
+	/** The description. */
 	private String description; 
 	
+	/** The organization. */
 	private String organization; 
 	
+	/** The platform. */
 	private String platform; 
 	
+	/** The category. */
 	private String category; 
 	
+	/** The version. */
 	private String version; 
 	
+	/** The link. */
 	private String link; 
 	
+	/** The img src. */
 	private String imgSrc;
 	
+	/** The screenshots. */
 	private String screenshots; 
 	
+	/** The price. */
 	private double price; 
 	
+	/** The approved. */
 	private boolean approved; 
 	
+	/** The user. */
 	private User user; 
 	
 	/** The comments. */
@@ -53,6 +70,23 @@ public class Application {
 	 * Instantiates a new application.
 	 */
 	public Application() {}
+	
+
+	/**
+	 * Instantiates a new application.
+	 *
+	 * @param id the id
+	 * @param name the name
+	 * @param category the category
+	 * @param user the user
+	 */
+	public Application(int id, String name, String category, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.user = user;
+	}
 
 	/**
 	 * Gets the id.

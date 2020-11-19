@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.web;
 
 import java.io.IOException;
@@ -21,6 +24,7 @@ import com.weapp.domain.Application;
 import com.weapp.domain.Comment;
 import com.weapp.service.ApplicationService;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationUserController.
  */

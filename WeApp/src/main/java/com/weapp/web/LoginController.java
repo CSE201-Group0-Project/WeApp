@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.weapp.domain.User;
 import com.weapp.service.UserService;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class LoginController.
  */

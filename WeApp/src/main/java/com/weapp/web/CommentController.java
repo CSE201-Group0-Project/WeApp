@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.web;
 
 import java.util.Date;
@@ -23,6 +26,7 @@ import com.weapp.repositories.CommentRepository;
 import com.weapp.service.ApplicationService;
 import com.weapp.service.CommentService;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CommentController.
  */

@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.service;
 
 import java.util.List;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.weapp.domain.Comment;
 import com.weapp.repositories.CommentRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CommentService.
  */
@@ -84,6 +88,15 @@ public class CommentService {
 	 */
 	public List<Comment> findByOrderByCreatedDateDesc() {
 		return commentRepo.findByOrderByCreatedDateDesc();
+	}
+
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
+	public List<Comment> findAll() {
+		return commentRepo.findAll();
 	}
 
 }

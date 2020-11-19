@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.domain;
 
 import java.util.HashSet;
@@ -16,24 +19,31 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.weapp.security.Authority;
 
+// TODO: Auto-generated Javadoc
 /**
- * Simple domain object representing a user
+ * Simple domain object representing a user.
  */
 @Entity
 @Table(name="users")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class User {
 	
+	/** The id. */
 	private int id; 
 	
+	/** The username. */
 	private String username; 
 	
+	/** The password. */
 	private String password; 
 	
+	/** The name. */
 	private String name; 
 	
+	/** The authorities. */
 	private Set<Authority> authorities = new HashSet<>(); 
 	
+	/** The applications. */
 	private Set<Application> applications = new HashSet<>(); 
 	
 	/**

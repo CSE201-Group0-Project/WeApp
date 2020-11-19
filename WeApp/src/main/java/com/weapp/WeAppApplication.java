@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp;
 
 import java.util.Arrays;
@@ -8,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class WeAppApplication.
  */

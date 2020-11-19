@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.repositories;
 
 import java.util.List;
@@ -7,6 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.weapp.domain.Comment;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * This is the repository class for Comment objects
  * All method names are compliant with Spring Data naming conventions

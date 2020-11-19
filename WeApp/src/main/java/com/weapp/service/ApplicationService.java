@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.service;
 
 import java.util.List;
@@ -10,6 +13,7 @@ import com.weapp.domain.Application;
 import com.weapp.domain.User;
 import com.weapp.repositories.ApplicationRepository;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationService.
  */

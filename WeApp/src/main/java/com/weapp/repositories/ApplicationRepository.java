@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.weapp.repositories;
 
 import java.util.List;
@@ -10,6 +13,7 @@ import org.springframework.data.repository.query.Param;
 import com.weapp.domain.Application;
 import com.weapp.domain.User;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is the repository class for Application objects
  * All method names are compliant with Spring Data naming conventions
