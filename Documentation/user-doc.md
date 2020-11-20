@@ -58,3 +58,20 @@ WeApp is different from platform-specific stores in that it provides more inform
 - Can filter the application requests by "Pending Request" or "Published" 
 - Can access the H2 Console (console view to interact with database) 
 
+## Directions
+To test each user-specific functionalities, use the following credentials to log into the app 
+- Registered user
+```
+Email Address: user 
+Password: pass 
+```
+- Moderator
+```
+Email Address: moderator
+Password: pass 
+```
+- Admin
+```
+Email Address: admin 
+Password: pass 
+```
