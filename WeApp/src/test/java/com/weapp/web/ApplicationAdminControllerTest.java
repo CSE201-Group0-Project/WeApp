@@ -89,7 +89,7 @@ class ApplicationAdminControllerTest {
 		when(appService.findAll()).thenReturn(Arrays.asList(first, second));
 
 
-		mockMvc.perform(get("/applications"))
+		mockMvc.perform(get("/dashboard"))
 		.andExpect(status().isOk()) // Make sure that the HTTP status code 200 is returned.
 		.andExpect(view().name("dashboard")) // Make sure the return view is dashboard 
 		// Make sure that model attribute applications has two items in it.
@@ -135,7 +135,7 @@ class ApplicationAdminControllerTest {
 		when(appService.findByKeywordForAdmin("number")).thenReturn(Arrays.asList(first, second));
 
 
-		mockMvc.perform(get("/applications")
+		mockMvc.perform(get("/dashboard")
 				.param("keyword", "number")) // Add the keyword request parameter to MockHttpServletRequest 
 		.andExpect(status().isOk()) // Make sure that the HTTP status code 200 is returned.
 		.andExpect(view().name("dashboard"))  // Make sure the return view is dashboard 
