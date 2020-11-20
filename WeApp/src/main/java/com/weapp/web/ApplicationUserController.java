@@ -1,5 +1,7 @@
 /*
- * 
+ * Thanks to Trevor Page for this recursive comment functionality getCommentsWithoutDuplicates
+ * The entirety of the getCommentsWithoutDuplicates is implemented with slight modifications 
+ * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/web/FeatureController.java
  */
 package com.weapp.web;
 
@@ -67,26 +69,39 @@ public class ApplicationUserController {
 
 	/**
 	 * Gets the comments without duplicates.
+	 * 
+	 *
+	 * Thanks to Trevor Page for this recursive comment functionality getCommentsWithoutDuplicates
+	 * The entirety of the getCommentsWithoutDuplicates is implemented with slight modifications 
+	 * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/web/FeatureController.java
 	 *
 	 * @param page the page
 	 * @param visitedComments the visited comments
 	 * @param comments the comments
 	 * @return the comments without duplicates
 	 */
-	private SortedSet<Comment> getCommentsWithoutDuplicates(int page, HashSet<Integer> visitedComments,
+	private SortedSet<Comment> getCommentsWithoutDuplicates(int depth, HashSet<Integer> visitedComments,
 			SortedSet<Comment> comments) {
-		page++;
+		depth++;
+		// To modify a collection while iterating through it
+		// we need an iterator
 	    Iterator<Comment> itr = comments.iterator();
 	    while (itr.hasNext()) {
 	      Comment comment = itr.next();
+	      // If successfully add the comment id to visited comments 
+	      // return true 
+	      // if false, that comment already exist in the visited comments
 	      boolean addedToVisitedComments = visitedComments.add(comment.getId());
 	      if (!addedToVisitedComments) {
+	    	// if this comment is not added to visited comments 
+	    	// remove the comment to avoid duplicates in the set of comments
 	        itr.remove();
-	        if (page != 1)
+	        if (depth != 1)
 	          return comments;
 	      }
+	      // Recursive call where we passed in the page, visited comments, nested comments of this current comment 
 	      if (addedToVisitedComments && !comment.getComments().isEmpty())
-	        getCommentsWithoutDuplicates(page, visitedComments, comment.getComments());
+	        getCommentsWithoutDuplicates(depth, visitedComments, comment.getComments());
 	    }
 	    
 	    return comments;
