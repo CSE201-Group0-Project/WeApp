@@ -31,4 +31,32 @@
 ![Alt Text](https://imgur.com/go3LbHK.gif)
 
 ## White Box Testing Results
+Class | Test | Passed
+--- | --- | --- 
+ApplicationRepositoryIntegrationTest | whenFindByName_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByOrganization_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByVersion_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByApproved_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByCategory_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByPlatform_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByUser_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByKeyword_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByKeywordForAdmin_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByOrderByPriceDesc_thenReturnApplications | Yes
+ApplicationRepositoryIntegrationTest | whenFindByOrderByNameAsc_thenReturnApplications | Yes
+CommentRepositoryIntegrationTest | whenFindByUserId_thenReturnComments| Yes
+CommentRepositoryIntegrationTest | whenFindByApplicationId_thenReturnComments | Yes
+CommentRepositoryIntegrationTest | whenFindByOrderByCreatedDateDesc_thenReturnComments | Yes
+CommentRepositoryIntegrationTest | whenFindByOrderByCreatedDateAsc_thenReturnComments  | Yes
+UserRepositoryIntegrationTest | whenFindByUsername_thenReturnUser | Yes
+UserRepositoryIntegrationTest | whenFindByName_thenReturnUser | Yes
+UserRepositoryIntegrationTest | whenSuccessFullySaveUser | Yes
+LoginControllerTest | testGetLogin | Yes
+LoginControllerTest | testGetRegister | Yes
+LoginControllerTest | testIfAUserCanLoginandLogout | Yes
+LoginControllerTest | testInvalidLogin | Yes
+ApplicationAdminControllerTest | findAll_ShouldAddAppEntriesToModelAndRenderAppListView | Yes
+ApplicationAdminControllerTest | findByKeyword_ShouldAddAppEntriesToModelAndRenderAppListView | Yes
+ApplicationAdminControllerTest | testGetApplicationRequest | Yes
+
 ![Alt Text](https://imgur.com/Ud8Pbx5.gif)
