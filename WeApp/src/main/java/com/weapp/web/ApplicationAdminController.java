@@ -1,5 +1,9 @@
 /*
+ * Thanks to spring.io's Building an Application with Spring Boot guide for the introduction of @Controller
+ * https://spring.io/guides/gs/spring-boot/
  * 
+ * Thanks to Baeldung for the introduction of Spring MVC
+ * https://www.baeldung.com/spring-mvc-model-model-map-model-view
  */
 package com.weapp.web;
 
@@ -24,42 +28,60 @@ import com.weapp.domain.Application;
 import com.weapp.domain.User;
 import com.weapp.service.ApplicationService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationAdminController.
+ * @Controller tells Spring Model View Controller architecture that this class is used for web requests
  */
 @Controller
 public class ApplicationAdminController {
-	
+
 	/** The app service. */
 	@Autowired
 	private ApplicationService appService;
 
 	/**
-	 * Gets the applications.
+	 * Dashboard view for admins.
 	 *
-	 * @param model the model
-	 * @param keyword the keyword
-	 * @return the applications
+	 * @param model ModelMap is used to pass attributes to render a view.
+	 * @param keyword the keyword to search for 
+	 * @param sortBy the sort by sort criteria 
+	 * @return dashboard
 	 */
-	@GetMapping("/applications") 
-	public String getApplications(ModelMap model, @Param("keyword") String keyword) {
+	@GetMapping("/dashboard")
+	public String getDashboardView(ModelMap model, @Param("keyword") String keyword, @Param("sortBy") String sortBy) {
 		List<Application> applications = new ArrayList<>(); 
 		if(keyword != null) {
 			applications = appService.findByKeywordForAdmin(keyword); 
 			model.addAttribute("applications", applications);
 			model.addAttribute("keyword", keyword);
+		} else if(sortBy != null) {
+			if(sortBy.equals("false")) {
+				applications = appService.findByApproved(false); 
+				model.addAttribute("applications", applications);
+				model.addAttribute("sortByValue", sortBy);
+			} 
+			if(sortBy.equals("true")) {
+				applications = appService.findByApproved(true); 
+				model.addAttribute("applications", applications);
+				model.addAttribute("sortByValue", sortBy);
+			}
+			if(sortBy.equals("")) {
+				applications = appService.findAll(); 
+				model.addAttribute("applications", applications);
+				model.addAttribute("sortByValue", sortBy);
+			}
 		} else {
 			applications = appService.findAll(); 
 			model.put("applications", applications);
 		}
 		return "dashboard"; 
+
 	}
 
 	/**
 	 * Gets the application request.
 	 *
-	 * @param model the model
+	 * @param model ModelMap is used to pass attributes to render a view.
 	 * @return the application request
 	 */
 	@GetMapping("/applicationRequest") 
@@ -70,11 +92,14 @@ public class ApplicationAdminController {
 
 	/**
 	 * Gets the application.
+	 * 
+	 * See documentation on HttpServletResponse
+	 * https://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletResponse.html
 	 *
 	 * @param applicationId the application id
-	 * @param model the model
-	 * @param response the response
-	 * @return the application
+	 * @param model ModelMap is used to pass attributes to render a view.
+	 * @param response the HttpServletResponse
+	 * @return edit application view 
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@GetMapping("/applications/{applicationId}")
@@ -96,7 +121,7 @@ public class ApplicationAdminController {
 	 *
 	 * @param applicationId the application id
 	 * @param application the application
-	 * @return the string
+	 * @return the dashboard view 
 	 */
 	@PostMapping("/applications/{applicationId}")
 	public String editApplication(@PathVariable int applicationId, Application application) {
@@ -111,7 +136,7 @@ public class ApplicationAdminController {
 	 *
 	 * @param applicationId the application id
 	 * @param application the application
-	 * @return the string
+	 * @return applications view
 	 */
 	@GetMapping("/applications/{applicationId}/delete")
 	public String deleteApplication(@PathVariable int applicationId, Application application) {
@@ -124,9 +149,9 @@ public class ApplicationAdminController {
 	/**
 	 * Save application.
 	 *
-	 * @param user the user
-	 * @param application the application
-	 * @return the string
+	 * @param user the user who is making the request 
+	 * @param application the application request
+	 * @return dashboard view 
 	 */
 	@PostMapping("save")
 	public String saveApplication(@AuthenticationPrincipal User user, Application application) {
@@ -134,4 +159,4 @@ public class ApplicationAdminController {
 		appService.save(application);
 		return "redirect:/dashboard"; 
 	}
-}
+	}

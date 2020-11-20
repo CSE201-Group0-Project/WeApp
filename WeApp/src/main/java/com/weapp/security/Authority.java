@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+ * https://www.baeldung.com/jpa-cascade-types
  */
 package com.weapp.security;
 
@@ -13,15 +14,17 @@ import org.springframework.security.core.GrantedAuthority;
 
 import com.weapp.domain.User;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Authority.
+ * 
+ * @Entity is used to indicate that it is a JPA entity
+ * GrantedAuthority represents an authority granted to an Authentication object.
  */
 @Entity
 public class Authority implements GrantedAuthority{
 	
 	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 4231145663136058737L;
+	private static final long serialVersionUID = 1L;
 	
 	/** The id. */
 	private int id; 
@@ -53,6 +56,10 @@ public class Authority implements GrantedAuthority{
 	
 	/**
 	 * Gets the id.
+	 * GenerationType.IDENTITY allows for auto-incremented of id 
+	 * 
+	 * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+	 * https://www.baeldung.com/jpa-cascade-types
 	 *
 	 * @return the id
 	 */

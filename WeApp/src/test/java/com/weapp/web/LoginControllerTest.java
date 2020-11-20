@@ -1,6 +1,12 @@
 /*
  * Thanks to Spring Security Reference 
  * https://docs.spring.io/spring-security/site/docs/5.0.x/reference/html/test-mockmvc.html
+ * 
+ * Thanks to Spring doc's on Testing improvements in Spring Boot 1.4
+ * https://spring.io/blog/2016/04/15/testing-improvements-in-spring-boot-1-4
+ * 
+ * Thanks to Baeldung's Testing in Spring Boot
+ * https://www.baeldung.com/spring-boot-testing
  */
 package com.weapp.web;
 
@@ -26,6 +32,9 @@ import com.weapp.domain.User;
 
 /**
  * The Class LoginControllerTest.
+ * @SpringBootTest tells Spring Boot to look for a main configuration class
+ * @RunWith(SpringRunner.class) tells JUnit to run using Spring's testing support. 
+ * @AutoConfigureMockMvc to use Spring's MockMvc
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest

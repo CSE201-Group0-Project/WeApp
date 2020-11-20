@@ -1,5 +1,9 @@
 /*
+ * Thanks to spring.io's Spring Security Java Config Preview: Web Security
+ * https://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/
  * 
+ * Thanks to Baeldung's Default Password Encoder in Spring Security 5
+ * https://www.baeldung.com/spring-security-5-default-password-encoder
  */
 package com.weapp.security;
 
@@ -7,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,13 +20,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WebSecurityConfig.
+ * @EnableWebSecurity and WebSecurityConfigurerAdapter provides web security
+ * Require the user to be authenticated in order to access some URL in the application
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(jsr250Enabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	/** The user details service. */
@@ -33,6 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	/**
 	 * Gets the password encoder.
 	 *
+	 * Thanks to Baeldung's Default Password Encoder in Spring Security 5
+	 * https://www.baeldung.com/spring-security-5-default-password-encoder
 	 * @return the password encoder
 	 */
 	@Bean
@@ -54,19 +59,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	/**
-	 * Configure global.
-	 *
-	 * @param auth the auth
-	 * @throws Exception the exception
-	 */
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-		.withUser("root").password("system").roles("SYSTEM");
-	}
-
-	/**
 	 * Configure.
+	 * Thanks to spring.io's Spring Security Java Config Preview: Web Security
+	 * for configuration of different end points based on authority level 
+	 * https://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/
+	 * 
+	 * Thanks to Java Code Examples for SessionCreationPolicy
+	 * https://www.programcreek.com/java-api-examples/?api=org.springframework.security.config.http.SessionCreationPolicy
 	 *
 	 * @param http the http
 	 * @throws Exception the exception

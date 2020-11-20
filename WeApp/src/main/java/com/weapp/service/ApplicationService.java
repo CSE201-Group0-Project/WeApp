@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to Baeldung for the guide on use of @Service
+ * https://www.baeldung.com/spring-component-repository-service
  */
 package com.weapp.service;
 
@@ -13,9 +14,10 @@ import com.weapp.domain.Application;
 import com.weapp.domain.User;
 import com.weapp.repositories.ApplicationRepository;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationService.
+ * 
+ * @Service indicates that this class holds the business logic 
  */
 @Service
 public class ApplicationService {

@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to Baeldung's Testing in Spring Boot
+ * https://www.baeldung.com/spring-boot-testing
  */
 package com.weapp.repositories;
 
@@ -23,6 +24,9 @@ import com.weapp.domain.User;
 
 /**
  * The Class ApplicationRepositoryIntegrationTest.
+ * @RunWith(SpringRunner.class) tells JUnit to run using Spring's testing support. 
+ * @DataJpaTest provides set up needed to test database layer 
+ * @AutoConfigureTestDatabaseconfigure a test database to use 
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -39,6 +43,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by name then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByName_thenReturnApplications() {
@@ -67,6 +73,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by organization then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByOrganization_thenReturnApplications() {
@@ -95,6 +103,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by version then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByVersion_thenReturnApplications() {
@@ -121,6 +131,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by approved then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByApproved_thenReturnApplications() {
@@ -147,6 +159,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by category then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByCategory_thenReturnApplications() {
@@ -175,6 +189,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by platform then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByPlatform_thenReturnApplications() {
@@ -203,6 +219,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by user then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByUser_thenReturnApplications() {
@@ -231,6 +249,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by keyword then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByKeyword_thenReturnApplications() {
@@ -273,6 +293,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by keyword for admin then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByKeywordForAdmin_thenReturnApplications() {
@@ -310,6 +332,8 @@ public class ApplicationRepositoryIntegrationTest {
 
 	/**
 	 * When find by order by price desc then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByOrderByPriceDesc_thenReturnApplications() {
@@ -331,6 +355,8 @@ public class ApplicationRepositoryIntegrationTest {
 	
 	/**
 	 * When find by order by name asc then return applications.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByOrderByNameAsc_thenReturnApplications() {

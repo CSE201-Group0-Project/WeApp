@@ -1,5 +1,9 @@
 /*
+ * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+ * https://www.baeldung.com/jpa-cascade-types
  * 
+ * Thanks to Baeldung for Eager/Lazy Loading In Hibernate
+ * https://www.baeldung.com/hibernate-lazy-eager-loading
  */
 package com.weapp.domain;
 
@@ -16,9 +20,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
-// TODO: Auto-generated Javadoc
 /**
  * Simple domain object representing an application.
+ * 
+ * @Entity is used to indicate that it is a JPA entity
  */
 @Entity
 public class Application {
@@ -90,6 +95,11 @@ public class Application {
 
 	/**
 	 * Gets the id.
+	 * 
+	 * GenerationType.IDENTITY allows for auto-incremented of id 
+	 * 
+	 * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+	 * https://www.baeldung.com/jpa-cascade-types
 	 *
 	 * @return the id
 	 */
@@ -308,6 +318,7 @@ public class Application {
 	
 	/**
 	 * Gets the user.
+	 * @ManyToOne indicate a many-to-one relationship 
 	 *
 	 * @return the user
 	 */
@@ -327,7 +338,17 @@ public class Application {
 	
 	/**
 	 * Gets the comments.
-	 *
+	 * The sorted set of comment is referencing the owner application
+	 * CascadeType.ALL make the parent's operations to propagate to all child entity
+	 * @OneToMany indicate a one-to-many relationship 
+	 * 
+	 * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+	 * https://www.baeldung.com/jpa-cascade-types
+	 * 
+	 * FetchType.LAZY is a design pattern used to defer initialization of an entity as much as possible 
+	 * Thanks to Baeldung for Eager/Lazy Loading In Hibernate
+	 * https://www.baeldung.com/hibernate-lazy-eager-loading
+	 * 
 	 * @return the comments
 	 */
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="application")

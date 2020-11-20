@@ -1,6 +1,9 @@
 /**
  * Thanks to Petri Kainulainen for the tutorial on configuration on Spring MVC framework unit test for controllers
  * https://www.petrikainulainen.net/programming/spring-framework/unit-testing-of-spring-mvc-controllers-normal-controllers/
+ * 
+ * Thanks to Baeldung's Testing in Spring Boot
+ * https://www.baeldung.com/spring-boot-testing
  * */
 package com.weapp.web;
 
@@ -35,9 +38,11 @@ import com.weapp.domain.Application;
 import com.weapp.domain.User;
 import com.weapp.service.ApplicationService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationAdminControllerTest.
+ * @SpringBootTest tells Spring Boot to look for a main configuration class
+ * @RunWith(SpringRunner.class) tells JUnit to run using Spring's testing support. 
+ * @AutoConfigureMockMvc to use Spring's MockMvc
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -55,7 +60,7 @@ class ApplicationAdminControllerTest {
 	/** The app service. */
 	@MockBean
 	private ApplicationService appService; 
-
+                                                                           
 	/**
 	 * Setup.
 	 */

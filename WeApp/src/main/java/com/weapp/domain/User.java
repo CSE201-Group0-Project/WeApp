@@ -1,5 +1,9 @@
 /*
+ * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+ * https://www.baeldung.com/jpa-cascade-types
  * 
+ * Thanks to Baeldung for Eager/Lazy Loading In Hibernate
+ * https://www.baeldung.com/hibernate-lazy-eager-loading
  */
 package com.weapp.domain;
 
@@ -15,17 +19,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.weapp.security.Authority;
 
-// TODO: Auto-generated Javadoc
 /**
  * Simple domain object representing a user.
+ * 
+ * @Entity is used to indicate that it is a JPA entity
  */
 @Entity
 @Table(name="users")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class User {
 	
 	/** The id. */
@@ -74,6 +76,10 @@ public class User {
 	
 	/**
 	 * Gets the id.
+	 * GenerationType.IDENTITY allows for auto-incremented of id 
+	 * 
+	 * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+	 * https://www.baeldung.com/jpa-cascade-types
 	 *
 	 * @return the id
 	 */
@@ -147,6 +153,10 @@ public class User {
 	
 	/**
 	 * Gets the authorities.
+	 * The set of authority is referencing the owner which is the user
+	 * 
+	 * @OneToMany indicate a one-to-many relationship 
+	 * CascadeType.ALL make the parent's operations to propagate to all child entity
 	 *
 	 * @return the authorities
 	 */
@@ -166,7 +176,17 @@ public class User {
 	
 	/**
 	 * Gets the applications.
-	 *
+	 * The set of application is referencing the owner which is the user
+	 * 
+	 * @OneToMany indicate a one-to-many relationship 
+	 * CascadeType.PERSIST makes the persist operation to propagate from a parent to all child entity
+	 * 
+	 * FetchType.LAZY is a design pattern used to defer initialization of an entity as much as possible 
+	 * Thanks to Baeldung for Eager/Lazy Loading In Hibernate
+	 * https://www.baeldung.com/hibernate-lazy-eager-loading
+	 * 
+	 * 
+	 * 
 	 * @return the applications
 	 */
 	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.LAZY, mappedBy="user")

@@ -1,3 +1,10 @@
+<!-- 
+	Thanks to Bootstrap's starter template 
+	https://getbootstrap.com/docs/4.0/examples/starter-template/
+	
+	Thanks to Baeldung's guide on Thymeleaf + Spring Security 
+	https://www.baeldung.com/csrf-thymeleaf-with-spring-security
+-->
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
@@ -30,7 +37,7 @@
 				</a></li>
 			</ul>
 			<div>
-				<form th:action="@{/applications}" class="form-inline">
+				<form th:action="@{/dashboard}" class="form-inline">
 					<input name="keyword" th:value="${keyword}"
 						class="form-control mr-sm-2" type="search" placeholder="Search"
 						aria-label="Search">
@@ -68,23 +75,33 @@
 				<button type="submit" class="btn btn-outline-info my-2 my-sm-0">Logout</button>
 			</form>
 		</div>
-		</div>
 	</nav>
 	<main role="main" class="container">
 		<div class="starter-template">
 			<h1>Dashboard</h1>
 			<div class="row">
 				<div class="col-9"></div>
-				<div class="col-3 btn-group submitter-group float-right">
-					<div class="input-group-prepend">
-						<div class="input-group-text">Status</div>
+				<form th:action="@{/dashboard}">
+					<div class="btn-group submitter-group float-right">
+						<div class="input-group-prepend">
+							<div class="input-group-text">Status</div>
+						</div>
+						<select class="form-control status-dropdown" id="selectSort"
+							th:name="sortBy">
+							<option value="" th:selected="${sortByValue} == ''">All</option>
+							<option value="false" th:selected="${sortByValue} == 'false'">Pending
+								Request</option>
+							<option value="true" th:selected="${sortByValue} == 'true'">Published</option>
+						</select>
 					</div>
-					<select class="form-control status-dropdown">
-						<option value="">All</option>
-						<option value="false">Pending Request</option>
-						<option value="true">Published</option>
-					</select>
-				</div>
+				</form>
+				<script>
+					$(function() {
+						$("#selectSort").on('change', function() {
+							this.form.submit();
+						})
+					});
+				</script>
 			</div>
 			<div class="row">
 				<table class="table mt-4" th:if="${applications != null}">

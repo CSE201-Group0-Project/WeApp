@@ -1,8 +1,12 @@
 INSERT INTO users (id, name, password, username) VALUES
 (1, 'Amy Nguyen', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'nguyen47'),
 (2, 'Xiaocheng Kang', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'kangx'),
-(3, 'Zhuoyue Sun', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'sunz32'); 
-(4, 'Jiahao Zhang', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'zhangj84'); 
+(3, 'Zhuoyue Sun', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'sunz32'),
+(4, 'Jiahao Zhang', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'zhangj84'),
+(5, 'Admin', '$2a$10$q5D/DijslNi6fj0X8i/RuufzcVJe2adRLdXcz.qhvf2IyI1vHwpvC', 'admin'),
+(6, 'Regular User', '$2a$10$q5D/DijslNi6fj0X8i/RuufzcVJe2adRLdXcz.qhvf2IyI1vHwpvC', 'user'),
+(7, 'Moderator', '$2a$10$q5D/DijslNi6fj0X8i/RuufzcVJe2adRLdXcz.qhvf2IyI1vHwpvC', 'moderator'); 
+
 INSERT INTO authority (id, authority, user_id) VALUES
 (1, 'ROLE_ADMIN', 1),
 (2, 'ROLE_USER', 1),
@@ -10,7 +14,13 @@ INSERT INTO authority (id, authority, user_id) VALUES
 (4, 'ROLE_USER', 3),
 (5, 'ROLE_MOD', 1),
 (6, 'ROLE_MOD', 3),
-(7, 'ROLE_ADMIN', 3);
+(7, 'ROLE_ADMIN', 3),
+(8, 'ROLE_ADMIN', 5), 
+(9, 'ROLE_USER', 5), 
+(10, 'ROLE_USER', 6),
+(11, 'ROLE_USER', 7),
+(12, 'ROLE_MOD', 7),
+(13, 'ROLE_USER', 4);
 
 INSERT INTO application (id, approved, category, description, img_src, link, name, organization, platform, price, screenshots, version, user_id) VALUES
 (1, 1, 'sms', 'A simple app that lets you text, video chat, and stay close with people you care about', 'https://i.imgur.com/e47wGWp.png', 'https://apps.apple.com/us/app/messenger/id454638411', 'Messenger', 'Facebook', 'IOS', 0.0, 'https://i.imgur.com/XMz9osB.jpg,https://i.imgur.com/KSUC7ws.jpg,https://i.imgur.com/mcU2Smv.jpg', 'v288.0', 1),

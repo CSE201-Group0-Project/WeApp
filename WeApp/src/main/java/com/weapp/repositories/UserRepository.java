@@ -1,5 +1,9 @@
 /*
+ * Thanks to spring.io documentation on Query Creation
+ * https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
  * 
+ * Thanks to Baeldung for the guide on use of @Repository
+ * https://www.baeldung.com/spring-component-repository-service
  */
 package com.weapp.repositories;
 
@@ -10,13 +14,14 @@ import org.springframework.stereotype.Repository;
 
 import com.weapp.domain.User;
 
-// TODO: Auto-generated Javadoc
 /**
  * This is the repository class for User objects
  * All method names are compliant with Spring Data naming conventions
  * so that this class can extends Spring Data JPA 
  * See: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
  * for more details
+ * 
+ * @Repository tell Spring that this is the repository - persistence layer (database repository) 
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{

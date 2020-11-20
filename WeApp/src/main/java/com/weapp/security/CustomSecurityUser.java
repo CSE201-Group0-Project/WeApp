@@ -1,5 +1,9 @@
 /*
+ * Thanks to spring.io documentation on UserDetails 
+ * https://docs.spring.io/spring-security/site/docs/4.2.15.RELEASE/apidocs/org/springframework/security/core/userdetails/User.html
  * 
+ * Thanks to Baeldung's Authentication with a Database-backed UserDetailsService
+ * https://www.baeldung.com/spring-security-authentication-with-a-database
  */
 package com.weapp.security;
 
@@ -9,9 +13,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.weapp.domain.User;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CustomSecurityUser.
+ * 
+ * UserDetails provides core user information.
  */
 public class CustomSecurityUser extends User implements UserDetails {
 

@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to Baeldung's Authentication with a Database-backed UserDetailsService
+ * https://www.baeldung.com/spring-security-authentication-with-a-database
  */
 package com.weapp.service;
 
@@ -27,7 +28,8 @@ public class UserService {
 	private PasswordEncoder passwordEncoder; 
 	
 	/**
-	 * Save.
+	 * Save a new user with encrypted password in the user repository
+	 * and set authority to ROLE_USER
 	 *
 	 * @param user the user
 	 * @return the user

@@ -1,3 +1,7 @@
+/*
+Thanks to Example starter JavaScript for disabling form submissions if there are invalid field
+https://getbootstrap.com/docs/4.1/components/forms/
+*/
 (function() {
   'use strict';
   window.addEventListener('load', function() {

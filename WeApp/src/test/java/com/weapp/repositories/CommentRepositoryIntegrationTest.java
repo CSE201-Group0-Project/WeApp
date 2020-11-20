@@ -1,4 +1,6 @@
-/*
+/* 
+ * Thanks to Baeldung's Testing in Spring Boot
+ * https://www.baeldung.com/spring-boot-testing
  * 
  */
 package com.weapp.repositories;
@@ -22,9 +24,11 @@ import com.weapp.domain.Application;
 import com.weapp.domain.Comment;
 import com.weapp.domain.User;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CommentRepositoryIntegrationTest.
+ * @RunWith(SpringRunner.class) tells JUnit to run using Spring's testing support. 
+ * @DataJpaTest provides set up needed to test database layer 
+ * @AutoConfigureTestDatabaseconfigure a test database to use 
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -41,6 +45,8 @@ public class CommentRepositoryIntegrationTest {
 	
 	/**
 	 * When find by user id then return comments.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByUserId_thenReturnComments() {
@@ -69,6 +75,8 @@ public class CommentRepositoryIntegrationTest {
 	
 	/**
 	 * When find by application id then return comments.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByApplicationId_thenReturnComments() {
@@ -97,6 +105,8 @@ public class CommentRepositoryIntegrationTest {
 	
 	/**
 	 * When find by order by created date desc then return comments.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByOrderByCreatedDateDesc_thenReturnComments() {
@@ -119,6 +129,8 @@ public class CommentRepositoryIntegrationTest {
 	
 	/**
 	 * When find by order by created date asc then return comments.
+	 * 
+	 * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
 	 */
 	@Test
 	void whenFindByOrderByCreatedDateAsc_thenReturnComments() {

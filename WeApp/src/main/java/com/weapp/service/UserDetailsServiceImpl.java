@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to Baeldung's Authentication with a Database-backed UserDetailsService
+ * https://www.baeldung.com/spring-security-authentication-with-a-database
  */
 package com.weapp.service;
 
@@ -13,9 +14,10 @@ import com.weapp.domain.User;
 import com.weapp.repositories.UserRepository;
 import com.weapp.security.CustomSecurityUser;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class UserDetailsServiceImpl.
+ * 
+ * Core interface which loads user-specific data.
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

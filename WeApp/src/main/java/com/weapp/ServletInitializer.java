@@ -1,14 +1,15 @@
-/*
- * 
+/* Thanks to Spring documentation on how to Create a Deployable War File 
+ * https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/html/howto-traditional-deployment.html
  */
 package com.weapp;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ServletInitializer.
+ * This is to make use of Spring Framework’s Servlet 3.0 support 
+ * configure application when it is launched by the servlet container
  */
 public class ServletInitializer extends SpringBootServletInitializer {
 

@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to the Getting Start with Building an Application with Spring Boot documentation
+ * https://spring.io/guides/gs/spring-boot/
  */
 package com.weapp;
 
@@ -11,15 +12,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WeAppApplication.
+ * The @SpringBootApplication annotation is used to add 
+ * @Configuration is used to mark this class as a source of bean definitions 
+ * @EnableAutoConfiguration have Spring Boot to add beans based on settings
+ * @ComponentScan have Spring to look for other components 
  */
 @SpringBootApplication
 public class WeAppApplication {
 
 	/**
-	 * The main method.
+	 * The main method is used to launch the application
 	 *
 	 * @param args the arguments
 	 */
@@ -28,9 +32,13 @@ public class WeAppApplication {
 	}
 	
 	/**
-	 * Command line runner.
+	 *  This method retrieves all the beans associated with the application 
+	 *  The bean are sorted and printed out 
+	 *  
+	 *  Thanks to Building an Application with Spring Boot guide on spring.io
+	 *  https://spring.io/guides/gs/spring-boot/
 	 *
-	 * @param ctx the ctx
+	 * @param ctx the application context
 	 * @return the command line runner
 	 */
 	@Bean

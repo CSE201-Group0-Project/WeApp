@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to spring.io's doc on Testing the Web Layer
+ *  https://spring.io/guides/gs/testing-web/ 
  */
 package com.weapp;
 
@@ -14,9 +15,9 @@ import com.weapp.web.ApplicationUserController;
 import com.weapp.web.UserViewController;
 import com.weapp.web.LoginController;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class WeAppApplicationTests.
+ * @SpringBootTest tells Spring Boot to look for a main configuration class
  */
 @SpringBootTest
 class WeAppApplicationTests {

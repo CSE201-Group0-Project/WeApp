@@ -1,22 +1,42 @@
 <!-- 
 	Thanks to Trevor Page for the implementation of this recursive functionality 
-	https://github.com/tp02ga/FreshVotes
+	The entirety of the javascript code is implemented 
+	https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/resources/templates/feature.html
+	
+	Thanks to Bootstrap's starter template 
+	https://getbootstrap.com/docs/4.0/examples/starter-template/
+	
+	Thanks to Baeldung's guide on Thymeleaf + Spring Security 
+	https://www.baeldung.com/csrf-thymeleaf-with-spring-security
 -->
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/appInfo.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/bda3874342.js" crossorigin="anonymous"></script>
-    
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="/css/appInfo.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/bda3874342.js"
+	crossorigin="anonymous"></script>
 
-    <title th:text="${app.name}">WeApp Dashboard</title>
-    <link rel="stylesheet" href="/css/appInfo.css">
-    <script type="text/javascript">
+
+<title th:text="${app.name}">WeApp Dashboard</title>
+<link rel="stylesheet" href="/css/appInfo.css">
+<script type="text/javascript">
       $(function() {
         $("#loginBtn").click(function() {
           window.location.href = "/login";
@@ -26,7 +46,7 @@
       $(function () {
       	$("button[id*='replyBtn-']").click(function () {
       	  $("form[id*='replyForm-']:not(.d-none)").each(function () {
-      		  // used to hide currently displayed child comment forms
+      		  // hide currently displayed child comment forms
       		  let formId = $(this).prop("id")
       	    
       	      $("#"+formId).addClass("d-none")
@@ -38,85 +58,106 @@
       	})
        })
     </script>
-  </head>
+</head>
 
-  <body>
-    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="/">
-        <img src="/images/logo_cropped.png" id="logo" class="d-inline-block align-top" alt="">
-        WeApp
-      </a>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-        <div>
-          <form th:action="@{/}" class="form-inline">
-            <input name="keyword" th:value="${keyword}" id="search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchButton">Search</button>
-            <button class="btn btn-outline-dark my-2 my-sm-0" type="button" id="btnClear" onclick="clearSearch()">Clear</button>
-          </form>
-          <script type="text/javascript">
+<body>
+	<nav class="navbar navbar-expand-lg fixed-top"
+		style="background-color: #e3f2fd;">
+		<a class="navbar-brand" href="/"> <img
+			src="/images/logo_cropped.png" id="logo"
+			class="d-inline-block align-top" alt=""> WeApp
+		</a>
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link" href="/">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+			</ul>
+			<div>
+				<form th:action="@{/}" class="form-inline">
+					<input name="keyword" th:value="${keyword}" id="search"
+						class="form-control mr-sm-2" type="text" placeholder="Search"
+						aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+						id="searchButton">Search</button>
+					<button class="btn btn-outline-dark my-2 my-sm-0" type="button"
+						id="btnClear" onclick="clearSearch()">Clear</button>
+				</form>
+				<script type="text/javascript">
             function clearSearch() {
               window.location = "[[@{/}]]";
             }
 
           </script>
-        </div>
-        <div sec:authorize="!isAuthenticated()">
-          <button type="button" class="btn btn-outline-info my-2 my-sm-0" id="loginBtn">Login</button>
-        </div>
-        <div sec:authorize="isAuthenticated()">
-          <form action="/logout" method="post">
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-            <button type="submit" class="btn btn-outline-info my-2 my-sm-0">Logout</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-    <main role="main" class="container">
-      <div class="starter-template">
-        <div class="row">
-        <div class="card text-left col-md-9">
-          <div class="card-horizontal">
-            <div class="img-square-wrapper">
-              <img class="" th:src="${app.imgSrc}" alt="Card image cap">
-            </div>
-            <div class="card-body">
-              <h4 th:text="${app.name}" class="card-title">Card title</h4>
-              <p th:text="${app.organization}"  class="card-text lead"></p>
-              <p th:text="${app.description}"  class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </div>
-        <div id="carouselSlides" class="carousel slide col-md" data-ride="carousel">
-          <div th:unless="${app.screenshots == null}" class="carousel-inner">
-            <div th:each="image, iterstat : ${#strings.arraySplit(app.screenshots, ',')}" th:class="${iterstat.index} == 0  ? 'carousel-item active':'carousel-item'">
-	      		<img class="d-block" th:src="${image}" alt="" style="height: 350px; width: 200px;">
-	    	</div>
-		  </div>
+			</div>
+			<!-- Use Thymeleaf security to allow non logged in user to see Login button -->
+
+			<div sec:authorize="!isAuthenticated()">
+				<button type="button" class="btn btn-outline-info my-2 my-sm-0"
+					id="loginBtn">Login</button>
+			</div>
+
+			<!-- Use Thymeleaf security to allow logged in user to see Logout button -->
+			<div sec:authorize="isAuthenticated()">
+				<form action="/logout" method="post">
+					<input type="hidden" th:name="${_csrf.parameterName}"
+						th:value="${_csrf.token}" />
+					<button type="submit" class="btn btn-outline-info my-2 my-sm-0">Logout</button>
+				</form>
+			</div>
 		</div>
+	</nav>
+	<main role="main" class="container">
+		<div class="starter-template">
+			<div class="row">
+				<div class="card text-left col-md-9">
+					<div class="card-horizontal">
+						<div class="img-square-wrapper">
+							<img class="" th:src="${app.imgSrc}" alt="Card image cap">
+						</div>
+						<div class="card-body">
+							<h4 th:text="${app.name}" class="card-title">Card title</h4>
+							<p th:text="${app.organization}" class="card-text lead"></p>
+							<p th:text="${app.description}" class="card-text">Some quick
+								example text to build on the card title and make up the bulk of
+								the card's content.</p>
+						</div>
+					</div>
+				</div>
+				<div id="carouselSlides" class="carousel slide col-md"
+					data-ride="carousel">
+					<div th:unless="${app.screenshots == null}" class="carousel-inner">
+						<div
+							th:each="image, iterstat : ${#strings.arraySplit(app.screenshots, ',')}"
+							th:class="${iterstat.index} == 0  ? 'carousel-item active':'carousel-item'">
+							<img class="d-block" th:src="${image}" alt=""
+								style="height: 350px; width: 200px;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mt-5">
+				<h2>Comment</h2>
+				<form
+					th:action="@{/app/{applicationId}/comments(applicationId=${app.id})}"
+					method="post">
+					<input type="hidden" th:name="${_csrf.parameterName}"
+						th:value="${_csrf.token}" />
+
+					<div class="form-group" style="margin-top: 1.5em">
+						<label for="text">Leave a comment below</label>
+						<textarea class="form-control" th:field="${rootComment.content}"
+							rows="3"></textarea>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-primary">Add Comment</button>
+					</div>
+				</form>
+				<hr />
+				<div th:replace="fragments/comment :: commentThread"></div>
+			</div>
 		</div>
-		<div class="mt-5">
-			<h2>Comment</h2>
-			<form th:action="@{/app/{applicationId}/comments(applicationId=${app.id})}" method="post">
-	          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-	          
-	          <div class="form-group" style="margin-top: 1.5em">
-	            <label for="text">Leave a comment below</label>
-	            <textarea class="form-control" th:field="${rootComment.content}" rows="3"></textarea>
-	          </div>
-	          <div>
-	            <button type="submit" class="btn btn-primary">Add Comment</button>
-	          </div>
-	        </form>
-	        <hr/> 
-	       	<div th:replace="fragments/comment :: commentThread"></div>
-		</div>
-      </div>
-    </main>
-  </body>
+	</main>
+</body>
 
 </html>

@@ -1,11 +1,16 @@
 /*
+ * Thanks to spring.io documentation on Query Creation
+ * https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
  * 
+ * Thanks to Baeldung for the guide on use of @Repository
+ * https://www.baeldung.com/spring-component-repository-service
  */
 package com.weapp.repositories;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.weapp.domain.Comment;
 
@@ -16,7 +21,11 @@ import com.weapp.domain.Comment;
  * so that this class can extends Spring Data JPA 
  * See: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
  * for more details
+ * 
+ * @Repository tell Spring that this is the repository - persistence layer (database repository) 
  */
+
+@Repository
 public interface CommentRepository extends JpaRepository<Comment, Integer>{
 	
 	/**

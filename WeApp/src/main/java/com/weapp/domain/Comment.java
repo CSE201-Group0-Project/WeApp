@@ -1,6 +1,12 @@
 /*
  * Thanks to Trevor Page for the equals, compareTo, and hashcode method for the Comment entity
  * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/domain/Comment.java
+ * 
+ * Thanks to Jackson Annotations - @JsonIdentityInfo for explaining the use of @JsonIdentityInfo
+ * https://www.tutorialspoint.com/jackson_annotations/jackson_annotations_jsonidentityinfo.htm
+ * 
+ * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+ * https://www.baeldung.com/jpa-cascade-types
  */
 package com.weapp.domain;
 
@@ -23,6 +29,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * Simple domain object representing a comment.
+ * @JsonIdentityInfo is used when there is a parent-child relationship
+ * and that the entity will be used for serialization/deserialization
+ * @Entity is used to indicate that it is a JPA entity
  */
 @Entity
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
@@ -88,6 +97,11 @@ public class Comment implements Comparable<Comment>{
 
 	/**
 	 * Gets the id.
+	 * 
+	 * GenerationType.IDENTITY allows for auto-incremented of id 
+	 * 
+	 * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+	 * https://www.baeldung.com/jpa-cascade-types
 	 *
 	 * @return the id
 	 */
@@ -127,6 +141,9 @@ public class Comment implements Comparable<Comment>{
 
 	/**
 	 * Gets the user.
+	 * 
+	 * @ManyToOne indicate a many-to-one relationship 
+	 * @JsonIgnore is used to ignore this field during serialization to JSON
 	 *
 	 * @return the user
 	 */
@@ -147,6 +164,9 @@ public class Comment implements Comparable<Comment>{
 
 	/**
 	 * Gets the application.
+	 * 
+	 * @ManyToOne indicate a many-to-one relationship
+	 * @JsonIgnore is used to ignore this field during serialization to JSON
 	 *
 	 * @return the application
 	 */
@@ -185,7 +205,13 @@ public class Comment implements Comparable<Comment>{
 
 	/**
 	 * Gets the comments.
-	 *
+	 * The sorted set of comment is referencing the owner comment 
+	 * @OneToMany indicate a one-to-many relationship 
+	 * 
+	 * CascadeType.ALL make the parent's operations to propagate from a parent to all child entity
+	 * 
+	 * Thanks to Baeldung for Overview of JPA/Hibernate Cascade Types
+	 * https://www.baeldung.com/jpa-cascade-types
 	 * @return the comments
 	 */
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="comment")
@@ -206,7 +232,14 @@ public class Comment implements Comparable<Comment>{
 
 	/**
 	 * Gets the comment.
-	 *
+	 * 
+	 * @JoinColumn indicates that comment_id column in the owner 
+	 * comment refers to a primary key in the reference comment
+	 * @ManyToOne indicate a many-to-one relationship 
+	 * @JsonIgnore is used to ignore this field during serialization to JSON
+	 * 
+	 * Thanks to Baeldung for the explanation of @JoinColumn annotation
+	 * https://www.baeldung.com/jpa-join-column
 	 * @return the comment
 	 */
 	@ManyToOne
@@ -239,7 +272,8 @@ public class Comment implements Comparable<Comment>{
 
 	/**
 	 * Hash code.
-	 *
+	 * Thanks to Trevor Page for the implementation of this method
+	 * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/domain/Comment.java
 	 * @return the int
 	 */
 	@Override
@@ -253,6 +287,8 @@ public class Comment implements Comparable<Comment>{
 	/**
 	 * Equals method.
 	 *
+	 * Thanks to Trevor Page for the implementation of this method
+	 * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/domain/Comment.java
 	 * @param obj the obj
 	 * @return true, if successful
 	 */
@@ -278,6 +314,9 @@ public class Comment implements Comparable<Comment>{
 	 * Compare to comment based on createdDate
 	 * If created dates of the two comments are equal 
 	 * Compare by id.
+	 * 
+	 * Thanks to Trevor Page for the implementation of this method
+	 * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/domain/Comment.java
 	 *
 	 * @param c the comment being compared 
 	 * @return the int compare value

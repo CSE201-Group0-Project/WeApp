@@ -1,5 +1,9 @@
 /*
+ * Thanks to spring.io's Building an Application with Spring Boot guide for the introduction of @Controller
+ * https://spring.io/guides/gs/spring-boot/
  * 
+ * Thanks to Baeldung for the introduction of Spring MVC
+ * https://www.baeldung.com/spring-mvc-model-model-map-model-view
  */
 package com.weapp.web;
 
@@ -13,9 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.weapp.domain.User;
 import com.weapp.service.UserService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class LoginController.
+ * @Controller tells Spring Model View Controller architecture that this class is used for web requests
  */
 @Controller
 public class LoginController {

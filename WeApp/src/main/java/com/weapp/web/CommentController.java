@@ -1,6 +1,12 @@
 /*
  *  Thanks to Trevor Page for this recursive comment functionality
  *  https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/web/CommentController.java
+ * 
+ * Thanks to spring.io's Building an Application with Spring Boot guide for the introduction of @Controller
+ * https://spring.io/guides/gs/spring-boot/
+ * 
+ * Thanks to Baeldung for the introduction of Spring MVC
+ * https://www.baeldung.com/spring-mvc-model-model-map-model-view
  */
 package com.weapp.web;
 
@@ -22,13 +28,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.weapp.domain.Application;
 import com.weapp.domain.Comment;
 import com.weapp.domain.User;
-import com.weapp.repositories.ApplicationRepository;
-import com.weapp.repositories.CommentRepository;
 import com.weapp.service.ApplicationService;
 import com.weapp.service.CommentService;
 
 /**
  * The Class CommentController.
+ * @Controller tells Spring Model View Controller architecture that this class is used for web requests
  */
 @Controller
 @RequestMapping("/app/{applicationId}/comments")
@@ -56,7 +61,7 @@ public class CommentController {
 		System.out.println(findByApplicationId);
 		return findByApplicationId;
 	}
-	
+
 	/**
 	 * Delete comment. If the comment is a root comment 
 	 * all of its child comments get deleted too 
@@ -73,7 +78,7 @@ public class CommentController {
 		commentService.deleteComment(commentId);
 		return "redirect:/app/" + applicationId; 
 	}
-	
+
 	/**
 	 * Post comment.
 	 *
@@ -91,18 +96,20 @@ public class CommentController {
 			,Comment rootComment, @RequestParam(required=false) Integer parentId,
 			@RequestParam(required=false) String childCommentText) {
 		Optional<Application> appOpt = appService.findById(applicationId);
-		// save a root level comment here
+		// save a root level comment
 		if (!StringUtils.isEmpty(rootComment.getContent())) {
 			populateCommentData(user, appOpt, rootComment);
 			commentService.save(rootComment);
 		}
-		// save a child level comment here 
+		// save a child level comment 
 		else if (parentId != null) {
 			Comment comment = new Comment();
 			Optional<Comment> parentCommentOpt = commentService.findById(parentId);
+			// If parent comment is present then set comment's comment_id to parent comment 
 			if (parentCommentOpt.isPresent())
 				comment.setComment(parentCommentOpt.get());
 			comment.setContent(childCommentText);
+			// call populateComment data 
 			populateCommentData(user, appOpt, comment);
 			commentService.save(comment);
 		} 

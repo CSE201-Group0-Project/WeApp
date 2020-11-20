@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to Baeldung for the guide on use of @Service
+ * https://www.baeldung.com/spring-component-repository-service
  */
 package com.weapp.service;
 
@@ -12,9 +13,9 @@ import org.springframework.stereotype.Service;
 import com.weapp.domain.Comment;
 import com.weapp.repositories.CommentRepository;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CommentService.
+ * @Service indicates that this class holds the business logic 
  */
 @Service
 public class CommentService {
@@ -34,7 +35,7 @@ public class CommentService {
 	}
 	
 	/**
-	 * Save.
+	 * Save the comment.
 	 *
 	 * @param comment the comment
 	 * @return the comment

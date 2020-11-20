@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to Baeldung's Testing in Spring Boot
+ * https://www.baeldung.com/spring-boot-testing
  */
 package com.weapp.repositories;
 
@@ -18,12 +19,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.weapp.domain.User;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class UserRepositoryIntegrationTest.
+ * @RunWith(SpringRunner.class) tells JUnit to run using Spring's testing support. 
+ * @DataJpaTest provides set up needed to test database layer 
+ * @AutoConfigureTestDatabaseconfigure a test database to use 
  */
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@DataJpaTest 
 @AutoConfigureTestDatabase(replace=AutoConfigureTestDatabase.Replace.NONE)
 public class UserRepositoryIntegrationTest {
 	
@@ -37,6 +40,8 @@ public class UserRepositoryIntegrationTest {
 	
     /**
      * When find by username then return user.
+     * 
+     * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
      */
     @Test
     void whenFindByUsername_thenReturnUser() {
@@ -56,6 +61,8 @@ public class UserRepositoryIntegrationTest {
     
     /**
      * When find by name then return user.
+     * 
+     * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
      */
     @Test
     void whenFindByName_thenReturnUser() {
@@ -82,6 +89,8 @@ public class UserRepositoryIntegrationTest {
     
     /**
      * When success fully save user.
+     * 
+     * https://www.baeldung.com/spring-boot-testing#integration-testing-with-datajpatest
      */
     @Test 
     void whenSuccessFullySaveUser() {
