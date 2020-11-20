@@ -21,7 +21,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.weapp.domain.Application;
 import com.weapp.domain.User;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ApplicationRepositoryIntegrationTest.
  */

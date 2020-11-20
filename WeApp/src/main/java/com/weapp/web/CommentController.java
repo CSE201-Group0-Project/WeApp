@@ -1,5 +1,6 @@
 /*
- * 
+ *  Thanks to Trevor Page for this recursive comment functionality
+ *  https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/web/CommentController.java
  */
 package com.weapp.web;
 
@@ -26,7 +27,6 @@ import com.weapp.repositories.CommentRepository;
 import com.weapp.service.ApplicationService;
 import com.weapp.service.CommentService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class CommentController.
  */
@@ -58,7 +58,8 @@ public class CommentController {
 	}
 	
 	/**
-	 * Delete comment.
+	 * Delete comment. If the comment is a root comment 
+	 * all of its child comments get deleted too 
 	 *
 	 * @param applicationId the application id
 	 * @param commentId the comment id
@@ -76,6 +77,8 @@ public class CommentController {
 	/**
 	 * Post comment.
 	 *
+	 *  Thanks to Trevor Page for this posting comment method
+	 *  https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/web/CommentController.java
 	 * @param user the user
 	 * @param applicationId the application id
 	 * @param rootComment the root comment
@@ -109,7 +112,9 @@ public class CommentController {
 
 	/**
 	 * Populate comment data.
-	 *
+	 *  If application exists, set the comment's application, user, and created date 
+	 *  Thanks to Trevor Page for this populate  comment data method
+	 *  https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/web/CommentController.java
 	 * @param user the user
 	 * @param appOpt the app opt
 	 * @param comment the comment

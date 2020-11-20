@@ -1,6 +1,7 @@
 <!-- 
-	Thanks to Trevor Page for the implementation of this recursive functionality 
-	https://github.com/tp02ga/FreshVotes
+	Thanks to Trevor Page for the implementation of this recursive functionality with Thymeleaf
+	and the design for comment box and reply button
+	https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/resources/templates/fragments/comment.html
 -->
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
@@ -13,19 +14,19 @@
         class="btn btn-danger btn-rounded btn-sm my-0 ml-5" onclick="return confirm('Are you sure?')">
         <i class="far fa-trash-alt"></i></a>
         </div>
-        <span th:text="${comment.content}">Example comment</span>
+        <span th:text="${comment.content}"></span>
         <div>
           <button class="btn btn-link" th:id="|replyBtn-${comment.id}|" style="margin-left: 12em">reply</button>
         </div>
         <form th:id="|replyForm-${comment.id}|" class="d-none" th:action="@{/app/{applicationId}/comments(applicationId=${app.id})}" method="post">
           <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
           <input type="hidden" name="parentId" th:id="|parentId-${comment.id}|" th:value="${comment.id}"/>
-          <div class="form-group" style="margin-top: 1.5em">
-            <label for="text">Leave a comment below</label>
+          <div class="form-group mt-2">
+            <label for="text">Enter your comment below</label>
             <textarea class="form-control" name="childCommentText" th:id="|childCommentText-${comment.id}|" rows="3"></textarea>
           </div>
           <div>
-            <button type="submit" class="btn btn-primary">Add Comment</button>
+            <button type="submit" class="btn btn-primary">Send</button>
           </div>
         </form>
         <hr/>
