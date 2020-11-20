@@ -1,5 +1,6 @@
 /*
- * 
+ * Thanks to Trevor Page for the equals, compareTo, and hashcode method for the Comment entity
+ * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/domain/Comment.java
  */
 package com.weapp.domain;
 
@@ -20,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-// TODO: Auto-generated Javadoc
 /**
  * Simple domain object representing a comment.
  */
@@ -251,7 +251,7 @@ public class Comment implements Comparable<Comment>{
 	}
 	
 	/**
-	 * Equals.
+	 * Equals method.
 	 *
 	 * @param obj the obj
 	 * @return true, if successful
@@ -275,10 +275,12 @@ public class Comment implements Comparable<Comment>{
 
 
 	/**
-	 * Compare to.
+	 * Compare to comment based on createdDate
+	 * If created dates of the two comments are equal 
+	 * Compare by id.
 	 *
-	 * @param c the c
-	 * @return the int
+	 * @param c the comment being compared 
+	 * @return the int compare value
 	 */
 	@Override
 	public int compareTo(Comment c) {

@@ -2,7 +2,7 @@ INSERT INTO users (id, name, password, username) VALUES
 (1, 'Amy Nguyen', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'nguyen47'),
 (2, 'Xiaocheng Kang', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'kangx'),
 (3, 'Zhuoyue Sun', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'sunz32'); 
-
+(4, 'Jiahao Zhang', '$2a$10$wxy7dVnZDcqqHtpkR6RXaO4n7v6LDIatK8nrHhlbAS0QmmBv0qfom', 'zhangj84'); 
 INSERT INTO authority (id, authority, user_id) VALUES
 (1, 'ROLE_ADMIN', 1),
 (2, 'ROLE_USER', 1),
