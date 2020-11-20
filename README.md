@@ -41,9 +41,10 @@ Select "Run As" -> "Maven Build..." -> In the goals, enter "spring-boot:run" -> 
 ```
 
 ## Necessary prerequisites for Windows
+
 1. Run Command Prompt as administrator
-2. Set the value of the environment variable to your JDK installation path as follows:
+2. Set the value of the environment variable to your JDK installation path as follows, XXX represents your JDK version number:
 ```
-setx -m JAVA_HOME "C:\Progra~1\Java\jdk1.8.0_XX"
+setx -m JAVA_HOME "C:\Program Files\Java\jdk1.8.0_XXX"
 echo %JAVA_HOME%
 ```
