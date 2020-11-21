@@ -2,6 +2,9 @@
 	Thanks to Bootstrap's starter template 
 	https://getbootstrap.com/docs/4.0/examples/starter-template/
 	
+	See docs on Card
+	https://getbootstrap.com/docs/4.3/components/card/
+	
 	Thanks to Baeldung's guide on Thymeleaf + Spring Security 
 	https://www.baeldung.com/csrf-thymeleaf-with-spring-security
 -->
@@ -63,15 +66,15 @@
 				</script>
 
 			</div>
-			<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<div sec:authorize="hasRole('ROLE_ADMIN')"> <!-- Only admin can see this -->
 				<button type="button" class="btn btn-primary my-2 my-sm-0"
 					id="viewDashboard">View Request</button>
 			</div>
-			<div sec:authorize="!isAuthenticated()">
+			<div sec:authorize="!isAuthenticated()">  <!-- Only unregistered users can see this -->
 				<button type="button" class="btn btn-outline-info my-2 my-sm-0"
 					id="loginBtn">Login</button>
 			</div>
-			<div sec:authorize="isAuthenticated()">
+			<div sec:authorize="isAuthenticated()"> <!-- Only registered users can see this -->
 				<form action="/logout" method="post">
 					<input type="hidden" th:name="${_csrf.parameterName}"
 						th:value="${_csrf.token}" />
@@ -141,7 +144,7 @@
 					</script>
 				</div>
 				<div class="card-deck mt-5" th:if="${applications != null}">
-					<div th:each="app : ${applications}" class="card mb-5">
+					<div th:each="app : ${applications}" class="card mb-5"> <!-- for each app in applications attribute -->
 						<img class="card-img-top" th:src="${app.imgSrc}"
 							alt="Card image cap">
 						<div class="card-body">

@@ -307,7 +307,7 @@ public class Comment implements Comparable<Comment>{
 			// check if object id is null and if the compared obj is not null 
 			if (other.id != null)
 				return false;
-			// check if compared object and ineer id is not equal 
+			// check if compared object and inner id is not equal 
 		} else if (!id.equals(other.id))
 			return false;
 		return true;

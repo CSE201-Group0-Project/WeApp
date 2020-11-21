@@ -35,7 +35,7 @@
         </form>
         <hr/>
         <div th:with="thread = ${comment.comments}"
-               th:include="fragments/comment.html :: commentThread" th:remove="tag" ></div>
+               th:include="fragments/comment.html :: commentThread" th:remove="tag" ></div>  <!-- include fragment to enable recursive UI for comments-->
       </div>
     </div>
   </body>

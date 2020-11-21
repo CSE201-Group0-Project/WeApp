@@ -2,6 +2,9 @@
 	Thanks to Bootstrap's starter template 
 	https://getbootstrap.com/docs/4.0/examples/starter-template/
 	
+	See docs on table 
+	https://getbootstrap.com/docs/4.1/content/tables/
+	
 	Thanks to Baeldung's guide on Thymeleaf + Spring Security 
 	https://www.baeldung.com/csrf-thymeleaf-with-spring-security
 -->
@@ -122,7 +125,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="app : ${applications}">
+						<tr th:each="app : ${applications}"> <!-- for each app in applications attribute -->
 							<th scope="row" th:text="${app.id}"></th>
 							<td th:text="${app.name}"></td>
 							<td th:text="${app.category}"></td>

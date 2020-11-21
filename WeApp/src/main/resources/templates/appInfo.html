@@ -6,6 +6,12 @@
 	Thanks to Bootstrap's starter template 
 	https://getbootstrap.com/docs/4.0/examples/starter-template/
 	
+	See docs on Carousel 
+	https://getbootstrap.com/docs/4.0/components/carousel/
+	
+	Thanks to user2652379's answer about dynamic carousel slider on Stackoverflow 
+	https://stackoverflow.com/questions/50126956/in-thymeleaf-spring-boot-dynamic-carousel-slider-does-not-work
+	
 	Thanks to Baeldung's guide on Thymeleaf + Spring Security 
 	https://www.baeldung.com/csrf-thymeleaf-with-spring-security
 -->
@@ -154,7 +160,7 @@
 					</div>
 				</form>
 				<hr />
-				<div th:replace="fragments/comment :: commentThread"></div>
+				<div th:replace="fragments/comment :: commentThread"></div>  <!-- include fragment to enable recursive UI for comments-->
 			</div>
 		</div>
 	</main>
