@@ -20,7 +20,8 @@ INSERT INTO authority (id, authority, user_id) VALUES
 (10, 'ROLE_USER', 6),
 (11, 'ROLE_USER', 7),
 (12, 'ROLE_MOD', 7),
-(13, 'ROLE_USER', 4);
+(13, 'ROLE_USER', 4),
+(14, 'ROLE_MOD', 5);
 
 INSERT INTO application (id, approved, category, description, img_src, link, name, organization, platform, price, screenshots, version, user_id) VALUES
 (1, 1, 'sms', 'A simple app that lets you text, video chat, and stay close with people you care about', 'https://i.imgur.com/e47wGWp.png', 'https://apps.apple.com/us/app/messenger/id454638411', 'Messenger', 'Facebook', 'IOS', 0.0, 'https://i.imgur.com/XMz9osB.jpg,https://i.imgur.com/KSUC7ws.jpg,https://i.imgur.com/mcU2Smv.jpg', 'v288.0', 1),

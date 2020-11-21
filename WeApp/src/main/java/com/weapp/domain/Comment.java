@@ -1,5 +1,5 @@
 /*
- * Thanks to Trevor Page for the equals, compareTo, and hashcode method for the Comment entity
+ * Thanks to Trevor Page for the equals method for the Comment entity
  * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/domain/Comment.java
  * 
  * Thanks to Jackson Annotations - @JsonIdentityInfo for explaining the use of @JsonIdentityInfo
@@ -272,38 +272,42 @@ public class Comment implements Comparable<Comment>{
 
 	/**
 	 * Hash code.
-	 * Thanks to Trevor Page for the implementation of this method
-	 * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/domain/Comment.java
+	 * 
 	 * @return the int
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+		int hash = 1;
+		hash = hash * prime + ((id == null) ? 0 : id.hashCode());
+		return hash;
 	}
 	
 	/**
 	 * Equals method.
 	 *
-	 * Thanks to Trevor Page for the implementation of this method
-	 * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/domain/Comment.java
 	 * @param obj the obj
 	 * @return true, if successful
 	 */
 	@Override
 	public boolean equals(Object obj) {
+		// check if obj equals this obj (same ref) 
 		if (this == obj)
 			return true;
+		// check if obj is null 
 		if (obj == null)
 			return false;
+		// check if obj is different class 
 		if (getClass() != obj.getClass())
 			return false;
+		// Cast compared object to Comment 
 		Comment other = (Comment) obj;
+		// compare inner id 
 		if (id == null) {
+			// check if object id is null and if the compared obj is not null 
 			if (other.id != null)
 				return false;
+			// check if compared object and ineer id is not equal 
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
@@ -314,9 +318,6 @@ public class Comment implements Comparable<Comment>{
 	 * Compare to comment based on createdDate
 	 * If created dates of the two comments are equal 
 	 * Compare by id.
-	 * 
-	 * Thanks to Trevor Page for the implementation of this method
-	 * https://github.com/tp02ga/FreshVotes/blob/master/FreshVotes/src/main/java/com/freshvotes/domain/Comment.java
 	 *
 	 * @param c the comment being compared 
 	 * @return the int compare value
