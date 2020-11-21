@@ -22,7 +22,6 @@ java -jar target/WeApp-0.0.1-SNAPSHOT.war
 ## Running WeApp by Eclipse
 
 1. On the command line 
-
 ```
 git clone https://github.com/CSE201-Group0-Project/WeApp.git
 ```
@@ -30,7 +29,6 @@ git clone https://github.com/CSE201-Group0-Project/WeApp.git
 ```
 File -> Import -> Maven -> Existing Maven project
 ```
-
 3. In STS, right click the project in project explorer 
 ```
 Select "Run As" -> "Spring Boot app"
